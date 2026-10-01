@@ -40,9 +40,9 @@ export interface ChallengeQuestion {
 }
 
 const AUDIENCE_PATTERNS = [
-  /for ([a-z][a-z\s,-]{2,50}?)(?:\.|,| who| that| without| to | so | –|—|$)/i,
-  /helps? ([a-z][a-z\s,-]{2,50}?)(?:\.|,| without| to | so |$)/i,
-  /built for ([a-z][a-z\s,-]{2,50}?)(?:\.|,| who| that|$)/i,
+  /for ([a-z][a-z\s,-]{2,50}?)(?=\s+(?:to|who|that|without|so|manage|sell|plan|turn|build|book|buy|use|save|find|predict|track|run)\b|[.,]|$)/i,
+  /helps? ([a-z][a-z\s,-]{2,50}?)(?=\s+(?:to|who|that|manage|sell|plan|turn|build|book|buy|use|save|find|predict|track|run)\b|[.,]|$)/i,
+  /built for ([a-z][a-z\s,-]{2,50}?)(?=\s+(?:to|who|that|manage|sell|plan|turn|build|book|buy|use|save|find|predict|track|run)\b|[.,]|$)/i,
 ]
 
 const PROBLEM_MARKERS = [
@@ -76,9 +76,11 @@ const OUTCOME_MARKERS = [
 ]
 
 const WHY_NOW_MARKERS = [
-  'now', 'today', 'currently', 'recently', 'new ', 'changed', 'shift', 'trend',
-  'growing', 'increasing', 'market', 'technology', 'regulation', 'behaviour',
-  'behavior', 'because', 'since ', 'this year', 'last year',
+  'right now', 'today', 'currently', 'recently', 'this year', 'last year',
+  'new technology', 'new regulation', 'new market', 'recent change',
+  'changed', 'shift', 'trend', 'growing demand', 'increasing demand',
+  'market shift', 'technology shift', 'regulation', 'behaviour has changed',
+  'behavior has changed',
 ]
 
 const CTA_MARKERS = [
