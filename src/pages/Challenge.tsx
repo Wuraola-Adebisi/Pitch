@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, RotateCcw, Target } from 'lucide-react'
 import { usePitch } from '../lib/usePitch'
 
