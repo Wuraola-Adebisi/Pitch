@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Inter", "Helvetica Neue", sans-serif;
+
+  --color-ink: #171410;
+  --color-paper: #f6f1e7;
+  --color-ember: #c1440e;
+  --color-moss: #3f4a3a;
+  --color-line: #ddd3bf;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--color-ember);
+  color: var(--color-paper);
+}
