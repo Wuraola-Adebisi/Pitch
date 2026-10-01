@@ -1,14 +1,11 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
-import { Ctx, type PitchState } from './pitch-context'
+import { Ctx } from './pitch-context'
 import {
   diagnose,
   buildArgumentMap,
   generateChallenges,
   generatePitch,
   type Diagnosis,
-  type ArgumentSection,
-  type ChallengeQuestion,
-  type PitchResult,
 } from './engine'
 
 const STORAGE_KEY = 'pitch-current-v1'
