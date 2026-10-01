@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { ArrowRight, Check, Copy, Download, Pencil, Swords } from 'lucide-react'
-import { usePitch } from '../lib/store'
+import { usePitch } from '../lib/usePitch'
 
 export default function PitchView() {
   const { pitch } = usePitch()
