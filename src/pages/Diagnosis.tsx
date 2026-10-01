@@ -9,6 +9,7 @@ const FIELDS = [
   { key: 'differentiation', label: 'Differentiation', hint: 'Why this approach?' },
   { key: 'proof', label: 'Proof', hint: 'What backs the claim?' },
   { key: 'outcome', label: 'Outcome', hint: 'What changes?' },
+  { key: 'whyNow', label: 'Why now', hint: 'Why is this timely?' },
   { key: 'cta', label: 'Ask', hint: 'What should happen next?' },
 ] as const
 
