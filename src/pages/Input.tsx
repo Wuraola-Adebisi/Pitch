@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight, Sparkles } from 'lucide-react'
-import { usePitch } from '../lib/store'
+import { usePitch } from '../lib/usePitch'
 
 const EXAMPLE = "I'm building an app that helps small businesses manage their inventory without spreadsheets."
 
