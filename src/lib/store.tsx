@@ -24,7 +24,7 @@ interface PitchState {
   reset: () => void
 }
 
-const Ctx = createContext<PitchState | null>(null)
+export const Ctx = createContext<PitchState | null>(null)
 
 function readSaved(): string {
   try {
