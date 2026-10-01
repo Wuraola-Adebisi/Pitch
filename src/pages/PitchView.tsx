@@ -43,7 +43,7 @@ export default function PitchView() {
       <div className="mb-5 flex items-center gap-3">
         <span className="text-xs font-medium uppercase tracking-[0.2em] text-ember">04</span>
         <span className="h-px w-10 bg-line" />
-        <span className="text-xs text-ink/40">Pitch draft</span>
+        <span className="text-xs text-ink/40">Draft</span>
       </div>
 
       <div className="grid gap-10 lg:grid-cols-[1fr_280px]">
@@ -57,7 +57,7 @@ export default function PitchView() {
             </div>
             <button type="button" onClick={() => navigate('/app')} className="inline-flex shrink-0 items-center gap-2 text-sm text-ink/50 transition-colors hover:text-ink">
               <Pencil size={14} />
-              Edit idea
+              Edit
             </button>
           </div>
 
@@ -81,7 +81,7 @@ export default function PitchView() {
 
         <aside className="h-fit rounded-2xl border border-line bg-ink p-6 text-paper lg:sticky lg:top-24">
           <p className="mb-3 text-xs uppercase tracking-[0.15em] text-paper/45">Draft controls</p>
-          <h2 className="mb-2 font-display text-2xl">Take it with you.</h2>
+          <h2 className="mb-2 font-display text-2xl">Good start. Now make it yours.</h2>
           <p className="mb-6 text-sm leading-relaxed text-paper/55">
             Copy the structured draft or save a Markdown file. Anything marked “Needs input” is deliberately left open rather than invented.
           </p>
@@ -89,15 +89,15 @@ export default function PitchView() {
           <div className="space-y-2">
             <button type="button" onClick={copy} className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-paper px-4 py-3 text-sm font-medium text-ink transition-colors hover:bg-ember hover:text-paper">
               {copied ? <Check size={15} /> : <Copy size={15} />}
-              {copied ? 'Copied' : 'Copy Markdown'}
+              {copied ? 'Copied' : 'Copy draft'}
             </button>
             <button type="button" onClick={download} className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-paper/20 px-4 py-3 text-sm font-medium transition-colors hover:bg-paper/10">
               <Download size={15} />
-              Download .md
+              Save as Markdown
             </button>
             <button type="button" onClick={() => navigate('/app/challenge')} className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-paper/20 px-4 py-3 text-sm font-medium transition-colors hover:bg-paper/10">
               <Swords size={15} />
-              Stress-test it
+              Pressure-test it
               <ArrowRight size={14} />
             </button>
           </div>
