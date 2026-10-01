@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { RotateCcw } from 'lucide-react'
-import { usePitch } from '../lib/store'
+import { usePitch } from '../lib/usePitch'
 
 const steps = [
   { path: '/app', label: 'Idea' },
