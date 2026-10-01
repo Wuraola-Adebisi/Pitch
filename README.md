@@ -1,32 +1,48 @@
-# React + TypeScript + Vite
+# Pitch
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Pitch turns a rough idea into a clearer argument.
 
-Currently, two official plugins are available:
+The MVP takes an idea through five stages:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. **Idea** — start with the rough version.
+2. **Diagnosis** — identify the audience, problem, promise, differentiation, proof, outcome, timing, and ask already present.
+3. **Argument map** — see how the pieces connect and where the weak links are.
+4. **Draft** — turn the available material into a structured pitch without inventing missing evidence.
+5. **Challenge** — surface questions the current argument does not answer yet.
 
-## React Compiler
+## Current MVP
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Pitch runs entirely in the browser. There is no account, backend, database, or remote AI call.
 
-## Expanding the Oxlint configuration
+The analysis engine is deliberately simple and local. It uses sentence and keyword patterns to demonstrate the product flow. A future model or API can replace the engine without changing the main workflow.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+The current idea is saved in `localStorage` so it survives a refresh. Use **New** in the app header to clear it.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+## Stack
+
+- React
+- TypeScript
+- Vite
+- React Router
+- Tailwind CSS
+- Lucide React
+- Oxlint
+
+## Run locally
+
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Build for production:
+
+```bash
+npm run build
+```
+
+Run lint:
+
+```bash
+npm run lint
+```
