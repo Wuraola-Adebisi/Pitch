@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight, ChevronDown, CircleHelp, FileText, GitBranch, MessageCircleQuestion, Sparkles } from 'lucide-react'
-import { usePitch } from '../lib/store'
+import { usePitch } from '../lib/usePitch'
 import LandingNav from '../components/LandingNav'
 import Footer from '../components/Footer'
 import MapPreview from '../components/MapPreview'
