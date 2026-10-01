@@ -6,7 +6,7 @@ const steps = [
   { path: '/app', label: 'Idea' },
   { path: '/app/diagnosis', label: 'Diagnosis' },
   { path: '/app/map', label: 'Map' },
-  { path: '/app/pitch', label: 'Pitch' },
+  { path: '/app/pitch', label: 'Draft' },
   { path: '/app/challenge', label: 'Challenge' },
 ]
 
@@ -16,46 +16,43 @@ export default function Header() {
   const activeIndex = Math.max(0, steps.findIndex((s) => s.path === pathname))
 
   return (
-    <header className="sticky top-0 z-30 border-b border-line bg-paper/90 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-4 sm:px-6">
-        <Link to="/" className="shrink-0 font-display text-2xl tracking-tight">
+    <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/80 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:px-6">
+        <Link to="/" className="flex shrink-0 items-center gap-2 font-display text-xl">
+          <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-ink text-xs text-white">P</span>
           Pitch
         </Link>
-
-        <nav className="flex-1 overflow-x-auto" aria-label="Pitch workflow">
-          <div className="flex min-w-max items-center justify-end gap-1 text-xs sm:justify-center sm:text-sm">
+        <nav className="flex flex-1 justify-center overflow-x-auto" aria-label="Pitch workflow">
+          <div className="flex min-w-max items-center gap-1 rounded-full border border-line bg-white/55 p-1 shadow-sm backdrop-blur">
             {steps.map((s, i) => {
               const active = pathname === s.path
               const completed = i < activeIndex
               return (
-                <span key={s.path} className="flex items-center">
-                  <Link
-                    to={s.path}
-                    aria-current={active ? 'step' : undefined}
-                    className={
-                      'rounded-full px-2.5 py-1.5 transition-colors sm:px-3 ' +
-                      (active
-                        ? 'bg-ink text-paper'
-                        : completed
-                          ? 'text-moss hover:bg-moss/10'
-                          : 'text-ink/45 hover:bg-ink/5 hover:text-ink')
-                    }
-                  >
-                    {s.label}
-                  </Link>
-                  {i < steps.length - 1 && <span className="px-0.5 text-ink/15">/</span>}
-                </span>
+                <Link
+                  key={s.path}
+                  to={s.path}
+                  aria-current={active ? 'step' : undefined}
+                  className={
+                    'rounded-full px-3 py-1.5 text-xs transition sm:px-3.5 sm:text-sm ' +
+                    (active
+                      ? 'bg-ink font-semibold text-white shadow-sm'
+                      : completed
+                        ? 'text-ink/65 hover:bg-mint/60'
+                        : 'text-ink/35 hover:bg-ink/5 hover:text-ink')
+                  }
+                >
+                  {s.label}
+                </Link>
               )
             })}
           </div>
         </nav>
-
         <button
           type="button"
           onClick={() => {
-            if (window.confirm('Start a new pitch? Your current idea will be cleared.')) reset()
+            if (window.confirm('Start a new idea? Your current pitch will be cleared.')) reset()
           }}
-          className="hidden shrink-0 items-center gap-1.5 text-xs text-ink/40 transition-colors hover:text-ink sm:inline-flex"
+          className="hidden shrink-0 items-center gap-1.5 rounded-full border border-line bg-white/50 px-3 py-2 text-xs text-muted transition hover:border-ink/20 hover:text-ink sm:inline-flex"
         >
           <RotateCcw size={13} />
           New
