@@ -20,27 +20,27 @@ export default function Challenge() {
       </div>
 
       <h1 className="mb-4 font-display text-4xl leading-tight sm:text-5xl">
-        Now try to break the argument.
+        Where could someone poke a hole?
       </h1>
       <p className="max-w-2xl leading-relaxed text-ink/55">
-        These are pressure tests for the claims your current draft leaves exposed. They are not predictions of what any specific investor will say.
+        These are questions your current argument does not answer cleanly yet. Use them to tighten the idea, not to make the copy prettier.
       </p>
 
       <div className="mt-10 grid gap-3 sm:grid-cols-2">
         <div className="rounded-2xl border border-ember/30 bg-ember/5 p-5">
           <p className="font-display text-3xl">{critical.length}</p>
-          <p className="mt-1 text-sm text-ink/55">high-priority gaps</p>
+          <p className="mt-1 text-sm text-ink/55">important gaps to address</p>
         </div>
         <div className="rounded-2xl border border-line bg-white/40 p-5">
           <p className="font-display text-3xl">{moderate.length}</p>
-          <p className="mt-1 text-sm text-ink/55">questions worth tightening</p>
+          <p className="mt-1 text-sm text-ink/55">other questions to consider</p>
         </div>
       </div>
 
       <div className="mt-10 space-y-8">
         {critical.length > 0 && (
           <section>
-            <h2 className="mb-4 font-display text-xl text-ember">Start here</h2>
+            <h2 className="mb-4 font-display text-xl text-ember">Start with these.</h2>
             <div className="space-y-3">
               {critical.map((c, i) => (
                 <article key={i} className="rounded-2xl border border-ember/25 bg-white/30 p-5 sm:p-6">
@@ -59,7 +59,7 @@ export default function Challenge() {
 
         {moderate.length > 0 && (
           <section>
-            <h2 className="mb-4 font-display text-xl text-ink/60">Then tighten these</h2>
+            <h2 className="mb-4 font-display text-xl text-ink/60">Worth tightening too.</h2>
             <div className="space-y-3">
               {moderate.map((c, i) => (
                 <article key={i} className="rounded-2xl border border-line bg-white/30 p-5 sm:p-6">
@@ -91,7 +91,7 @@ export default function Challenge() {
           className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-colors hover:bg-ember"
         >
           <RotateCcw size={14} />
-          Start a new pitch
+          Start another idea
           <ArrowRight size={14} />
         </button>
       </div>
