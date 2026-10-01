@@ -5,8 +5,6 @@ import { usePitch } from '../lib/usePitch'
 export default function Challenge() {
   const { challenges, map, reset } = usePitch()
   const navigate = useNavigate()
-  if (challenges.length === 0) return <Navigate to="/app" replace />
-
   const critical = challenges.filter((c) => c.severity === 'critical')
   const moderate = challenges.filter((c) => c.severity === 'moderate')
   const targetLabel = (key: string) => map.find((s) => s.key === key)?.label ?? key
@@ -20,13 +18,15 @@ export default function Challenge() {
       </div>
 
       <h1 className="mb-4 font-display text-4xl leading-tight sm:text-5xl">
-        Where could someone poke a hole?
+        {challenges.length > 0 ? 'Where could someone poke a hole?' : 'No obvious gaps detected.'}
       </h1>
       <p className="max-w-2xl leading-relaxed text-ink/55">
-        These are questions your current argument does not answer cleanly yet. Use them to tighten the idea, not to make the copy prettier.
+        {challenges.length > 0
+          ? 'These are questions your current argument does not answer cleanly yet. Use them to tighten the idea, not to make the copy prettier.'
+          : 'The current rule-based checks did not find an obvious unanswered question. That is not a guarantee that the argument is sound, so use your own judgement before presenting it.'}
       </p>
 
-      <div className="mt-10 grid gap-3 sm:grid-cols-2">
+      {challenges.length > 0 && <div className="mt-10 grid gap-3 sm:grid-cols-2">
         <div className="rounded-2xl border border-ember/30 bg-ember/5 p-5">
           <p className="font-display text-3xl">{critical.length}</p>
           <p className="mt-1 text-sm text-ink/55">important gaps to address</p>
@@ -35,7 +35,7 @@ export default function Challenge() {
           <p className="font-display text-3xl">{moderate.length}</p>
           <p className="mt-1 text-sm text-ink/55">other questions to consider</p>
         </div>
-      </div>
+      </div>}
 
       <div className="mt-10 space-y-8">
         {critical.length > 0 && (
