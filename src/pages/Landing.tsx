@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ArrowRight, Check, ChevronDown, CircleHelp, FileText, GitBranch, MessageCircleQuestion, Sparkles } from 'lucide-react'
+import { ArrowRight, ChevronDown, CircleHelp, FileText, GitBranch, MessageCircleQuestion, Sparkles } from 'lucide-react'
 import { usePitch } from '../lib/store'
 import LandingNav from '../components/LandingNav'
 import Footer from '../components/Footer'
@@ -47,7 +47,7 @@ export default function Landing() {
               <div>
                 <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white/60 px-3 py-1.5 text-xs font-medium shadow-sm backdrop-blur">
                   <span className="h-2 w-2 rounded-full bg-coral" />
-                  AI-assisted pitch thinking
+                  A thinking tool for rough ideas
                 </div>
 
                 <h1 className="max-w-3xl font-display text-5xl leading-[.98] tracking-[-.03em] sm:text-7xl">
@@ -129,7 +129,7 @@ export default function Landing() {
           </div>
         </section>
 
-        <section className="px-4 py-20 sm:px-6 sm:py-28">
+        <section id="method" className="px-4 py-20 sm:px-6 sm:py-28">
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[.75fr_1.25fr] lg:items-start">
             <div className="lg:sticky lg:top-24">
               <p className="text-xs font-semibold uppercase tracking-[.18em] text-coral">How it works</p>
@@ -170,7 +170,7 @@ export default function Landing() {
           </div>
         </section>
 
-        <section className="border-y border-line bg-[#f0ece4] px-4 py-20 sm:px-6 sm:py-28">
+        <section id="argument-map" className="border-y border-line bg-[#f0ece4] px-4 py-20 sm:px-6 sm:py-28">
           <div className="mx-auto max-w-6xl">
             <div className="mb-10 max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[.18em] text-coral">See the thinking</p>
