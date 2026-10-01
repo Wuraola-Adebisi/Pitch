@@ -1,6 +1,6 @@
 import { Navigate, useNavigate } from 'react-router-dom'
 import { ArrowRight, Check, Pencil, X } from 'lucide-react'
-import { usePitch } from '../lib/store'
+import { usePitch } from '../lib/usePitch'
 
 const FIELDS = [
   { key: 'audience', label: 'Audience', hint: 'Who is this for?' },
