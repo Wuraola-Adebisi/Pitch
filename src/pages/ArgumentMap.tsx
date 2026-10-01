@@ -36,7 +36,7 @@ export default function ArgumentMap() {
             <span className="text-xs text-ink/40">Argument map</span>
           </div>
           <h1 className="mb-3 font-display text-4xl leading-tight sm:text-5xl">
-            See the case as a chain.
+            Does the case hold together?
           </h1>
           <p className="max-w-2xl leading-relaxed text-ink/55">
             A pitch is not seven independent claims. Each stage has to earn the next one.
@@ -96,11 +96,11 @@ export default function ArgumentMap() {
 
             <div className="space-y-7">
               <section>
-                <p className="mb-2 text-xs uppercase tracking-[0.15em] text-ink/35">What you have</p>
+                <p className="mb-2 text-xs uppercase tracking-[0.15em] text-ink/35">What we found</p>
                 <p className="leading-relaxed text-ink/75">{open.have || 'Nothing established here yet.'}</p>
               </section>
               <section>
-                <p className="mb-2 text-xs uppercase tracking-[0.15em] text-ember/75">What to add</p>
+                <p className="mb-2 text-xs uppercase tracking-[0.15em] text-ember/75">What is missing</p>
                 <p className="leading-relaxed text-ink/70">{open.missing || 'The detected signal is present. Strengthen it with evidence.'}</p>
               </section>
               <section className="border-t border-line pt-7">
@@ -108,7 +108,7 @@ export default function ArgumentMap() {
                 <p className="leading-relaxed text-ink/70">{open.evidence}</p>
               </section>
               <section className="border-t border-line pt-7">
-                <p className="mb-2 text-xs uppercase tracking-[0.15em] text-ink/35">Then what?</p>
+                <p className="mb-2 text-xs uppercase tracking-[0.15em] text-ink/35">Why it connects</p>
                 <p className="leading-relaxed text-ink/70">{open.connection}</p>
               </section>
             </div>
@@ -116,7 +116,7 @@ export default function ArgumentMap() {
 
           <div className="mt-6 flex justify-end">
             <button type="button" onClick={() => navigate('/app/pitch')} className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-colors hover:bg-ember">
-              Draft the pitch
+              Turn it into a draft
               <ArrowRight size={16} />
             </button>
           </div>
