@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight, Sparkles } from 'lucide-react'
 import { usePitch } from '../lib/store'
@@ -15,8 +15,6 @@ export default function Input() {
   const { raw, submit } = usePitch()
   const [text, setText] = useState(raw)
   const navigate = useNavigate()
-
-  useEffect(() => setText(raw), [raw])
 
   const go = () => {
     const clean = text.trim()
