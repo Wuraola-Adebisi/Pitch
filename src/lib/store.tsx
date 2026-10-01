@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useEffect, useMemo, useState, type ReactNode } from 'react'
+import { Ctx, type PitchState } from './pitch-context'
 import {
   diagnose,
   buildArgumentMap,
@@ -14,17 +15,6 @@ const STORAGE_KEY = 'pitch-current-v1'
 
 interface SavedState { raw: string }
 
-interface PitchState {
-  raw: string
-  diagnosis: Diagnosis | null
-  map: ArgumentSection[]
-  challenges: ChallengeQuestion[]
-  pitch: PitchResult | null
-  submit: (raw: string) => void
-  reset: () => void
-}
-
-export const Ctx = createContext<PitchState | null>(null)
 
 function readSaved(): string {
   try {
