@@ -35,7 +35,7 @@ export default function Input() {
         </div>
 
         <h1 className="mb-5 font-display text-4xl leading-[1.03] sm:text-6xl">
-          What are you trying to make someone believe?
+          Give me the idea before you give me the pitch.
         </h1>
         <p className="max-w-2xl text-base leading-relaxed text-ink/60 sm:text-lg">
           Write the pitch as it exists in your head. Two or three sentences is enough.
@@ -75,14 +75,14 @@ export default function Input() {
               className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-colors hover:bg-ember disabled:opacity-30"
             >
               <Sparkles size={15} />
-              Diagnose idea
+              Analyse my idea
               <ArrowRight size={16} />
             </button>
           </div>
         </div>
 
         <div className="mt-8">
-          <p className="mb-3 text-xs uppercase tracking-[0.15em] text-ink/35">Need a starting point?</p>
+          <p className="mb-3 text-xs uppercase tracking-[0.15em] text-ink/35">Or start from one of these</p>
           <div className="grid gap-3 sm:grid-cols-3">
             {STARTERS.map((starter) => (
               <button
@@ -98,7 +98,7 @@ export default function Input() {
         </div>
 
         <p className="mt-8 text-xs text-ink/35">
-          Local MVP: your idea is analysed in the browser and saved locally so you can move between steps without losing it.
+          Your idea is analysed and saved locally in this MVP. It is not sent to an AI service.
         </p>
       </div>
     </div>
