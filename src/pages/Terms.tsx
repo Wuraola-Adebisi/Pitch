@@ -17,50 +17,48 @@ export default function Terms() {
             <section>
               <h2 className="font-display text-xl text-ink mb-2">What you're using</h2>
               <p>
-                Pitch is a prototype, built to demonstrate a product idea
-                rather than to run a live service. By using it, you're
-                trying a demo, not entering an agreement for an ongoing
-                product.
+                Pitch is an MVP provided for use as a browser-based thinking
+                tool. By using it, you acknowledge that the product is still
+                under development and that its output may be incomplete.
               </p>
             </section>
 
             <section>
               <h2 className="font-display text-xl text-ink mb-2">The diagnosis is heuristic, not AI</h2>
               <p>
-                This version of Pitch runs on a local, rule-based engine
-                rather than a real model. The diagnosis, argument map, and
+                This version of Pitch runs on a local, rule-based engine rather
+                than a remote AI model. The diagnosis, argument map, draft, and
                 challenge questions are generated from keyword and sentence
-                patterns, not genuine reasoning about your idea. Don't treat
-                the output as expert advice, and don't use it as the only
-                input into a real pitch, raise, or business decision.
+                patterns. Treat the output as a starting point for thinking,
+                not as expert advice or a substitute for your own judgment.
               </p>
             </section>
 
             <section>
               <h2 className="font-display text-xl text-ink mb-2">No warranty</h2>
               <p>
-                Pitch is provided as is, with no guarantee that the
-                diagnosis is accurate, complete, or suited to your specific
-                idea. It's a prototype built to show a concept, not a
-                finished product.
+                Pitch is provided as is. The analysis can be incomplete,
+                inaccurate, or unsuitable for a particular idea. Features may
+                change as the MVP develops.
               </p>
             </section>
 
             <section>
               <h2 className="font-display text-xl text-ink mb-2">Ownership of your idea</h2>
               <p>
-                Whatever you type into Pitch stays yours. Since it never
-                leaves your browser, there's nothing for anyone else to
-                claim rights over.
+                Whatever you type into Pitch remains yours. The current MVP
+                processes it locally in your browser and does not upload it to a
+                server. This does not change any rights you may have in
+                material you enter.
               </p>
             </section>
 
             <section>
               <h2 className="font-display text-xl text-ink mb-2">Changes</h2>
               <p>
-                These terms may change as the prototype changes. Since
-                there are no accounts, there's no notice system beyond this
-                page.
+                These terms may change as the MVP develops. The current version
+                has no user accounts, so the latest version of this page is the
+                applicable one when you use the product.
               </p>
             </section>
           </div>
