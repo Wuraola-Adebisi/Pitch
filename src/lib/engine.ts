@@ -23,6 +23,7 @@ export interface Diagnosis {
   differentiation: string | null
   proof: string | null
   outcome: string | null
+  whyNow: string | null
   cta: string | null
   missing: string[]
 }
@@ -74,6 +75,12 @@ const OUTCOME_MARKERS = [
   'cost', 'profit', 'conversion',
 ]
 
+const WHY_NOW_MARKERS = [
+  'now', 'today', 'currently', 'recently', 'new ', 'changed', 'shift', 'trend',
+  'growing', 'increasing', 'market', 'technology', 'regulation', 'behaviour',
+  'behavior', 'because', 'since ', 'this year', 'last year',
+]
+
 const CTA_MARKERS = [
   'book a call', 'sign up', 'invest', 'join', 'demo', 'try it', 'get started',
   'schedule', 'reach out', 'contact us', 'pre-order', 'waitlist', 'buy', 'subscribe',
@@ -112,6 +119,7 @@ export function diagnose(raw: string): Diagnosis {
   const differentiation = firstMatchingSentence(sentences, DIFFERENTIATION_MARKERS)
   const proof = firstMatchingSentence(sentences, PROOF_MARKERS)
   const outcome = firstMatchingSentence(sentences, OUTCOME_MARKERS)
+  const whyNow = firstMatchingSentence(sentences, WHY_NOW_MARKERS)
   const cta = firstMatchingSentence(sentences, CTA_MARKERS)
 
   const missing: string[] = []
@@ -120,6 +128,7 @@ export function diagnose(raw: string): Diagnosis {
   if (!differentiation) missing.push('differentiation')
   if (!proof) missing.push('proof')
   if (!outcome) missing.push('outcome')
+  if (!whyNow) missing.push('why now')
   if (!cta) missing.push('call to action')
 
   return {
@@ -131,6 +140,7 @@ export function diagnose(raw: string): Diagnosis {
     differentiation,
     proof,
     outcome,
+    whyNow,
     cta,
     missing,
   }
@@ -179,11 +189,11 @@ export function buildArgumentMap(d: Diagnosis): ArgumentSection[] {
     {
       key: 'whyNow',
       label: 'Why now',
-      have: '',
-      missing: 'No timing signal detected. Explain what changed in technology, behaviour, cost, regulation, or the market.',
+      have: d.whyNow ?? '',
+      missing: d.whyNow ? '' : 'No timing signal detected. Explain what changed in technology, behaviour, cost, regulation, or the market.',
       evidence: 'A dated trend, market shift, new capability, or behavioural change that makes this timely.',
       connection: 'Timing turns a reasonable idea into a timely opportunity.',
-      strength: 'weak',
+      strength: strengthOf(d.whyNow),
     },
     {
       key: 'proof',
@@ -239,7 +249,7 @@ export function generateChallenges(d: Diagnosis, _map: ArgumentSection[]): Chall
     severity: 'moderate',
   })
 
-  qs.push({
+  if (!d.whyNow) qs.push({
     question: 'Why does this need to exist now? What changed that makes the timing matter?',
     targets: 'whyNow',
     severity: 'moderate',
@@ -280,8 +290,8 @@ export function generatePitch(d: Diagnosis, _map: ArgumentSection[]): PitchResul
     },
     {
       heading: 'Why Now',
-      body: 'Add the market, technology, behaviour, cost, or regulatory shift that makes this timely.',
-      status: 'draft',
+      body: d.whyNow ?? 'Add the market, technology, behaviour, cost, or regulatory shift that makes this timely.',
+      status: d.whyNow ? 'grounded' : 'draft',
     },
     {
       heading: 'Proof',
