@@ -32,15 +32,15 @@ export default function Diagnosis() {
         <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
           <div>
             <h1 className="mb-3 font-display text-4xl leading-tight sm:text-5xl">
-              {foundCount} of {FIELDS.length} building blocks are visible.
+              Here's what your idea is actually saying.
             </h1>
             <p className="text-ink/55">
-              This is coverage, not a quality score. Missing pieces are where the next questions should go.
+              Pitch found {foundCount} of {FIELDS.length} useful signals. That is not a score. It simply shows how much of the argument is already present.
             </p>
           </div>
           <div className="shrink-0 rounded-2xl border border-line bg-white/40 px-5 py-4">
             <p className="font-display text-3xl">{coverage}%</p>
-            <p className="mt-1 text-xs text-ink/40">argument coverage</p>
+            <p className="mt-1 text-xs text-ink/40">signals found</p>
           </div>
         </div>
       </div>
@@ -82,10 +82,10 @@ export default function Diagnosis() {
       <div className="mt-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <button type="button" onClick={() => navigate('/app')} className="inline-flex items-center gap-2 text-sm text-ink/50 transition-colors hover:text-ink">
           <Pencil size={14} />
-          Edit the idea
+          Change the idea
         </button>
         <button type="button" onClick={() => navigate('/app/map')} className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-colors hover:bg-ember">
-          Map the argument
+          See the argument map
           <ArrowRight size={16} />
         </button>
       </div>
