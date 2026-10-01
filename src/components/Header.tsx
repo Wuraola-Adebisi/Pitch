@@ -16,14 +16,14 @@ export default function Header() {
   const activeIndex = Math.max(0, steps.findIndex((s) => s.path === pathname))
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:px-6">
-        <Link to="/" className="flex shrink-0 items-center gap-2 font-display text-xl">
-          <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-ink text-xs text-white">P</span>
-          Pitch
+    <header className="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center gap-5 px-5 py-3.5 sm:px-8">
+        <Link to="/" className="flex shrink-0 items-center gap-2.5 font-display text-lg font-bold tracking-[-0.04em]">
+          <span className="flex h-7 w-7 items-center justify-center bg-ink text-[11px] font-bold text-white">P</span>
+          <span className="hidden sm:inline">Pitch</span>
         </Link>
         <nav className="flex flex-1 justify-center overflow-x-auto" aria-label="Pitch workflow">
-          <div className="flex min-w-max items-center gap-1 rounded-full border border-line bg-white/55 p-1 shadow-sm backdrop-blur">
+          <div className="flex min-w-max items-center gap-0">
             {steps.map((s, i) => {
               const active = pathname === s.path
               const completed = i < activeIndex
@@ -32,14 +32,9 @@ export default function Header() {
                   key={s.path}
                   to={s.path}
                   aria-current={active ? 'step' : undefined}
-                  className={
-                    'rounded-full px-3 py-1.5 text-xs transition sm:px-3.5 sm:text-sm ' +
-                    (active
-                      ? 'bg-ink font-semibold text-white shadow-sm'
-                      : completed
-                        ? 'text-ink/65 hover:bg-mint/60'
-                        : 'text-ink/35 hover:bg-ink/5 hover:text-ink')
-                  }
+                  className={'border-b-2 px-3 py-2 text-xs font-medium transition-colors sm:px-4 sm:text-[13px] ' + (
+                    active ? 'border-ink text-ink' : completed ? 'border-transparent text-ink/60 hover:text-ink' : 'border-transparent text-ink/30 hover:text-ink'
+                  )}
                 >
                   {s.label}
                 </Link>
@@ -49,13 +44,10 @@ export default function Header() {
         </nav>
         <button
           type="button"
-          onClick={() => {
-            if (window.confirm('Start a new idea? Your current pitch will be cleared.')) reset()
-          }}
-          className="hidden shrink-0 items-center gap-1.5 rounded-full border border-line bg-white/50 px-3 py-2 text-xs text-muted transition hover:border-ink/20 hover:text-ink sm:inline-flex"
+          onClick={() => { if (window.confirm('Start a new idea? Your current pitch will be cleared.')) reset() }}
+          className="hidden shrink-0 items-center gap-1.5 border border-line bg-card px-3 py-2 text-xs font-medium text-muted transition-colors hover:border-ink hover:text-ink sm:inline-flex"
         >
-          <RotateCcw size={13} />
-          New
+          <RotateCcw size={13} /> New
         </button>
       </div>
     </header>
