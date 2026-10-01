@@ -2,17 +2,17 @@ import { Link } from 'react-router-dom'
 
 export default function LandingNav() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
-        <Link to="/" className="flex items-center gap-2 font-display text-2xl tracking-tight">
-          <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-ink text-sm text-white">P</span>
+    <header className="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
+        <Link to="/" className="flex items-center gap-2.5 font-display text-lg font-bold tracking-[-0.04em]">
+          <span className="flex h-7 w-7 items-center justify-center bg-ink text-[11px] font-bold text-white">P</span>
           Pitch
         </Link>
-        <nav className="hidden items-center gap-7 text-sm text-muted sm:flex">
-          <a href="#method" className="transition hover:text-ink">How it works</a>
-          <a href="#argument-map" className="transition hover:text-ink">Argument map</a>
+        <nav className="hidden items-center gap-8 text-[13px] font-medium text-muted sm:flex">
+          <a href="#method" className="transition-colors hover:text-ink">How it works</a>
+          <a href="#argument-map" className="transition-colors hover:text-ink">Argument map</a>
         </nav>
-        <Link to="/app" className="rounded-full bg-ink px-4 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-coral">
+        <Link to="/app" className="border border-ink bg-ink px-4 py-2.5 text-[13px] font-semibold text-white transition-colors hover:border-coral hover:bg-coral">
           Try Pitch
         </Link>
       </div>
