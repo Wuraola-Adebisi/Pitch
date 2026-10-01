@@ -1,6 +1,6 @@
 import { Navigate, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, RotateCcw, Target } from 'lucide-react'
-import { usePitch } from '../lib/store'
+import { usePitch } from '../lib/usePitch'
 
 export default function Challenge() {
   const { challenges, map, reset } = usePitch()
