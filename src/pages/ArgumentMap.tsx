@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { ArrowDown, ArrowRight, CheckCircle2 } from 'lucide-react'
-import { usePitch } from '../lib/store'
+import { usePitch } from '../lib/usePitch'
 import type { SectionKey } from '../lib/engine'
 
 const strengthStyle: Record<string, string> = {
