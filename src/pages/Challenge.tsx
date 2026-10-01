@@ -10,46 +10,26 @@ export default function Challenge() {
   const targetLabel = (key: string) => map.find((s) => s.key === key)?.label ?? key
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
-      <div className="mb-5 flex items-center gap-3">
-        <span className="text-xs font-medium uppercase tracking-[0.2em] text-ember">05</span>
-        <span className="h-px w-10 bg-line" />
-        <span className="text-xs text-ink/40">Challenge</span>
-      </div>
+    <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-20">
+      <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[.18em] text-coral"><span>05</span><span className="h-px w-8 bg-coral" />Challenge</div>
+      <h1 className="mt-7 max-w-4xl font-display text-5xl font-bold leading-[.95] tracking-[-.055em] sm:text-7xl">{challenges.length > 0 ? 'Where could someone poke a hole?' : 'No obvious gaps detected.'}</h1>
+      <p className="mt-6 max-w-2xl text-base leading-7 text-muted">{challenges.length > 0 ? 'These are questions your current argument does not answer cleanly yet. Use them to tighten the idea, not to make the copy prettier.' : 'The current rule-based checks did not find an obvious unanswered question. That is not a guarantee that the argument is sound, so use your own judgement before presenting it.'}</p>
 
-      <h1 className="mb-4 font-display text-4xl leading-tight sm:text-5xl">
-        {challenges.length > 0 ? 'Where could someone poke a hole?' : 'No obvious gaps detected.'}
-      </h1>
-      <p className="max-w-2xl leading-relaxed text-ink/55">
-        {challenges.length > 0
-          ? 'These are questions your current argument does not answer cleanly yet. Use them to tighten the idea, not to make the copy prettier.'
-          : 'The current rule-based checks did not find an obvious unanswered question. That is not a guarantee that the argument is sound, so use your own judgement before presenting it.'}
-      </p>
-
-      {challenges.length > 0 && <div className="mt-10 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-2xl border border-ember/30 bg-ember/5 p-5">
-          <p className="font-display text-3xl">{critical.length}</p>
-          <p className="mt-1 text-sm text-ink/55">important gaps to address</p>
-        </div>
-        <div className="rounded-2xl border border-line bg-white/40 p-5">
-          <p className="font-display text-3xl">{moderate.length}</p>
-          <p className="mt-1 text-sm text-ink/55">other questions to consider</p>
-        </div>
+      {challenges.length > 0 && <div className="mt-12 grid gap-px border border-line bg-line sm:grid-cols-2">
+        <div className="border-t-2 border-coral bg-card p-6"><p className="font-display text-4xl font-bold">{critical.length}</p><p className="mt-2 text-sm text-muted">important gaps to address</p></div>
+        <div className="border-t-2 border-ink bg-card p-6"><p className="font-display text-4xl font-bold">{moderate.length}</p><p className="mt-2 text-sm text-muted">other questions to consider</p></div>
       </div>}
 
-      <div className="mt-10 space-y-8">
+      <div className="mt-12 space-y-12">
         {critical.length > 0 && (
           <section>
-            <h2 className="mb-4 font-display text-xl text-ember">Start with these.</h2>
-            <div className="space-y-3">
+            <h2 className="mb-4 text-xs font-semibold uppercase tracking-[.15em] text-coral">Start with these</h2>
+            <div className="border-t border-ink">
               {critical.map((c, i) => (
-                <article key={i} className="rounded-2xl border border-ember/25 bg-white/30 p-5 sm:p-6">
-                  <div className="flex items-start gap-4">
-                    <span className="pt-1 text-xs text-ember/60">{String(i + 1).padStart(2, '0')}</span>
-                    <div>
-                      <p className="mb-2 text-xs uppercase tracking-[0.12em] text-ink/35">Pressure point · {targetLabel(c.targets)}</p>
-                      <p className="font-display text-xl leading-snug">{c.question}</p>
-                    </div>
+                <article key={i} className="border-b border-line py-6">
+                  <div className="grid gap-3 sm:grid-cols-[48px_1fr] sm:gap-5">
+                    <span className="text-xs text-coral">{String(i + 1).padStart(2, '0')}</span>
+                    <div><p className="mb-2 text-xs uppercase tracking-[.12em] text-muted">Pressure point · {targetLabel(c.targets)}</p><p className="text-xl font-semibold leading-snug">{c.question}</p></div>
                   </div>
                 </article>
               ))}
@@ -59,16 +39,13 @@ export default function Challenge() {
 
         {moderate.length > 0 && (
           <section>
-            <h2 className="mb-4 font-display text-xl text-ink/60">Worth tightening too.</h2>
-            <div className="space-y-3">
+            <h2 className="mb-4 text-xs font-semibold uppercase tracking-[.15em] text-muted">Worth tightening too</h2>
+            <div className="border-t border-line">
               {moderate.map((c, i) => (
-                <article key={i} className="rounded-2xl border border-line bg-white/30 p-5 sm:p-6">
-                  <div className="flex items-start gap-4">
-                    <Target size={15} className="mt-1 shrink-0 text-ink/30" />
-                    <div>
-                      <p className="mb-2 text-xs uppercase tracking-[0.12em] text-ink/35">Pressure point · {targetLabel(c.targets)}</p>
-                      <p className="text-lg leading-snug text-ink/80">{c.question}</p>
-                    </div>
+                <article key={i} className="border-b border-line py-6">
+                  <div className="grid gap-3 sm:grid-cols-[48px_1fr] sm:gap-5">
+                    <Target size={15} className="mt-1 text-muted" />
+                    <div><p className="mb-2 text-xs uppercase tracking-[.12em] text-muted">Pressure point · {targetLabel(c.targets)}</p><p className="text-lg leading-snug text-ink/80">{c.question}</p></div>
                   </div>
                 </article>
               ))}
@@ -77,23 +54,9 @@ export default function Challenge() {
         )}
       </div>
 
-      <div className="mt-12 flex flex-col justify-between gap-4 sm:flex-row">
-        <button type="button" onClick={() => navigate('/app/pitch')} className="inline-flex items-center gap-2 text-sm text-ink/50 transition-colors hover:text-ink">
-          <ArrowLeft size={14} />
-          Back to draft
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            reset()
-            navigate('/app')
-          }}
-          className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-colors hover:bg-ember"
-        >
-          <RotateCcw size={14} />
-          Start another idea
-          <ArrowRight size={14} />
-        </button>
+      <div className="mt-12 flex flex-col justify-between gap-4 border-t border-line pt-6 sm:flex-row">
+        <button type="button" onClick={() => navigate('/app/pitch')} className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-ink"><ArrowLeft size={14} />Back to draft</button>
+        <button type="button" onClick={() => { reset(); navigate('/app') }} className="inline-flex items-center gap-2 border border-ink bg-ink px-5 py-3 text-sm font-semibold text-white hover:border-coral hover:bg-coral"><RotateCcw size={14} />Start another idea <ArrowRight size={14} /></button>
       </div>
     </div>
   )
