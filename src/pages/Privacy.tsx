@@ -17,48 +17,46 @@ export default function Privacy() {
             <section>
               <h2 className="font-display text-xl text-ink mb-2">What this page covers</h2>
               <p>
-                Pitch is a prototype built to show how an AI pitch strategist
-                could work. This policy explains what happens to the idea
-                you type in, in plain terms, not legal boilerplate.
+                Pitch is a browser-based MVP. This policy explains what happens
+                to the idea you type in, in plain terms.
               </p>
             </section>
 
             <section>
               <h2 className="font-display text-xl text-ink mb-2">What Pitch does with your idea</h2>
               <p>
-                The diagnosis, argument map, pitch, and challenge questions
-                are generated entirely in your browser. Nothing you type is
-                sent to a server, stored in a database, or seen by anyone
-                else. Refreshing the page clears it.
+                The diagnosis, argument map, pitch, and challenge questions are
+                generated entirely in your browser. Nothing you type is sent to
+                a server or stored in a database. Your current idea is saved in
+                your browser's local storage so it survives a refresh. It can
+                be removed with the New button in the app.
               </p>
             </section>
 
             <section>
               <h2 className="font-display text-xl text-ink mb-2">No accounts, no tracking</h2>
               <p>
-                Pitch does not ask you to sign up, does not use cookies to
-                track you across sites, and does not run analytics on what
-                you type. There is nothing to opt out of, because nothing is
-                collected.
+                Pitch does not require an account and does not send the text of
+                your idea to an analytics or AI service. The app currently does
+                not use analytics or cross-site tracking.
               </p>
             </section>
 
             <section>
-              <h2 className="font-display text-xl text-ink mb-2">If this becomes a real product</h2>
+              <h2 className="font-display text-xl text-ink mb-2">If this becomes a larger product</h2>
               <p>
-                A production version of Pitch would need a real policy
-                covering account data, storage, and any AI provider used to
-                process pitches. This page will be rewritten before that
-                happens. Until then, treat Pitch as a demo, not a service
-                handling sensitive business information.
+                If the MVP later adds accounts, a server, analytics, or an AI
+                provider, this policy will be updated before those features are
+                introduced. Until then, avoid entering information that you
+                would not want stored in your own browser.
               </p>
             </section>
 
             <section>
               <h2 className="font-display text-xl text-ink mb-2">Questions</h2>
               <p>
-                This is a portfolio project. Reach out to the builder
-                directly with any questions about how it works.
+                For questions about how the MVP handles data, refer to the
+                current implementation and this policy.
               </p>
             </section>
           </div>
