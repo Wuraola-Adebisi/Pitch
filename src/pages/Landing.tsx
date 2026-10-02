@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight, Check, ChevronDown, CircleHelp, FileText, GitBranch, MessageCircleQuestion } from 'lucide-react'
 import { usePitch } from '../lib/usePitch'
+import { validateIdea } from '../lib/engine'
 import LandingNav from '../components/LandingNav'
 import Footer from '../components/Footer'
 import MapPreview from '../components/MapPreview'
@@ -25,11 +26,15 @@ const faqs = [
 export default function Landing() {
   const [text, setText] = useState('')
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [error, setError] = useState<string | null>(null)
   const { submit } = usePitch()
   const navigate = useNavigate()
 
   const go = () => {
     if (!text.trim()) return
+    const problem = validateIdea(text.trim())
+    if (problem) { setError(problem); return }
+    setError(null)
     submit(text.trim())
     navigate('/app/diagnosis')
   }
@@ -70,13 +75,15 @@ export default function Landing() {
 
                   <textarea
                     value={text}
-                    onChange={(e) => setText(e.target.value)}
+                    onChange={(e) => { setText(e.target.value); if (error) setError(null) }}
                     rows={7}
                     maxLength={1500}
                     aria-label="Idea to analyse"
                     className="mt-6 w-full resize-none rounded-2xl border border-line bg-card p-5 text-base leading-7 text-ink placeholder:text-ink/25 focus:border-coral focus:outline-none sm:p-6 sm:text-lg"
                   />
 
+                  {error && <p role="alert" className="mt-3 text-sm text-coral">{error}</p>}
+                  {text.length >= 1500 && <p className="mt-3 text-xs text-muted">You have reached the 1500 character limit. Anything beyond it was not added.</p>}
                   <div className="mt-4 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
                     <div className="flex items-center gap-2 text-xs text-muted">
                       <span className="h-1.5 w-1.5 rounded-full bg-muted" />
