@@ -18,7 +18,7 @@ export default function About() {
             [ShieldCheck, 'Local by default', 'There is no account or backend in the MVP. Your current idea stays in browser storage.'],
           ].map(([Icon, title, body]) => (
             <div key={String(title)} className="rounded-2xl border border-line bg-card p-6">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#282723]"><Icon size={16} /></div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-line"><Icon size={16} /></div>
               <h2 className="mt-7 text-xl font-semibold">{String(title)}</h2>
               <p className="mt-3 text-sm leading-6 text-muted">{String(body)}</p>
             </div>
