@@ -1,15 +1,14 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { ArrowDown, ArrowRight } from 'lucide-react'
 import { usePitch } from '../lib/usePitch'
 import type { SectionKey } from '../lib/engine'
 
-const strengthStyle: Record<string, string> = {
-  strong: 'border-[#282723] bg-[#1c1b17]',
-  partial: 'border-[#eb4604] bg-[#282723]',
-  weak: 'border-dashed border-[#282723]/30 bg-[#171614]',
+const styles: Record<string, { card: string; dot: string; label: string }> = {
+  strong: { card: 'border-[#282723] bg-[#1c1b17]', dot: 'bg-[#99a57d]', label: 'established' },
+  partial: { card: 'border-[#eb4604]/60 bg-[#eb4604]/[0.07]', dot: 'bg-[#eb4604]', label: 'partial' },
+  weak: { card: 'border-dashed border-[#eb4604]/45 bg-[#100c0b]', dot: 'bg-[#eb4604]/45', label: 'missing' },
 }
-const strengthDot: Record<string, string> = { strong: 'bg-[#f5f3ee]', partial: 'bg-[#eb4604]', weak: 'bg-[#eb4604]/35' }
 
 export default function ArgumentMap() {
   const { map, diagnosis } = usePitch()
@@ -18,64 +17,76 @@ export default function ArgumentMap() {
   if (map.length === 0 || !diagnosis) return <Navigate to="/app" replace />
 
   const open = map.find((s) => s.key === openKey) ?? map[0]
-  const strong = map.filter((s) => s.strength === 'strong').length
-  const partial = map.filter((s) => s.strength === 'partial').length
-  const weak = map.filter((s) => s.strength === 'weak').length
+  const openIndex = map.findIndex((s) => s.key === open.key)
+  const gaps = map.filter((s) => s.strength === 'weak').length
 
   return (
     <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-20">
-      <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
-        <div>
-          <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]"><span>Argument map</span><span className="h-px w-8 bg-[#eb4604]" /></div>
-          <h1 className="mt-7 max-w-4xl font-display text-5xl font-bold leading-[.94] tracking-[-.055em] sm:text-7xl">Follow the logic.</h1>
-          <p className="mt-6 max-w-2xl leading-7 text-[#99a57d]">The argument moves from problem to ask. A weak link matters because it affects what comes after it.</p>
-        </div>
-        <div className="flex gap-2 text-xs font-medium">
-          <span className="border border-[#282723] bg-[#1c1b17] px-3 py-2">{strong} established</span>
-          <span className="border border-[#eb4604] bg-[#282723] px-3 py-2">{partial} partial</span>
-          <span className="border border-dashed border-[#282723]/30 px-3 py-2">{weak} missing</span>
-        </div>
+      <div className="max-w-4xl">
+        <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]"><span>03 / Argument map</span><span className="h-px w-8 bg-[#eb4604]" /></div>
+        <h1 className="mt-7 font-display text-5xl font-bold leading-[.9] tracking-[-.06em] sm:text-7xl">See what depends on what.</h1>
+        <p className="mt-6 max-w-2xl text-base leading-7 text-[#99a57d]">The map turns the source into a chain. Click through it. Missing links are not hidden inside a polished draft.</p>
       </div>
 
-      <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_360px] lg:items-start lg:gap-12">
-        <div className="relative">
-          <div className="absolute bottom-8 left-5 top-8 hidden w-px bg-line sm:block" />
-          <div className="space-y-3">
-            {map.map((s, i) => (
-              <div key={s.key} className="relative sm:pl-12">
-                <span className={'absolute left-[17px] top-6 z-10 hidden h-2.5 w-2.5 rounded-full border-2 border-[#171614] sm:block ' + strengthDot[s.strength]} />
-                <button
-                  type="button"
-                  onClick={() => setOpenKey(s.key)}
-                  className={'w-full rounded-2xl border p-5 text-left transition-transform hover:-translate-y-0.5 ' + strengthStyle[s.strength] + (open.key === s.key ? ' ring-2 ring-[#eb4604] ring-offset-2 ring-offset-[#171614]' : '')}
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <span className="font-mono text-[10px] text-[#99a57d]">0{i + 1}</span>
-                      <p className="mt-1 text-lg font-semibold">{s.label}</p>
+      <div className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-10">
+        <div className="rounded-[1.5rem] border border-[#282723] bg-[#100c0b] p-4 sm:p-6">
+          <div className="mb-5 flex items-center justify-between gap-4 px-1">
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[.15em] text-[#99a57d]">Argument chain</p>
+              <p className="mt-1 text-xs text-[#99a57d]/70">{gaps ? gaps + ' missing link' + (gaps === 1 ? '' : 's') : 'No detected gaps'}</p>
+            </div>
+            <span className="rounded-full border border-[#282723] px-3 py-1.5 font-mono text-[10px] text-[#99a57d]">7 nodes</span>
+          </div>
+
+          <div className="space-y-2">
+            {map.map((s, i) => {
+              const style = styles[s.strength]
+              const active = open.key === s.key
+              return (
+                <div key={s.key}>
+                  <button type="button" onClick={() => setOpenKey(s.key)} className={'group flex w-full items-center gap-4 rounded-2xl border p-4 text-left transition-all hover:-translate-y-0.5 ' + style.card + (active ? ' ring-2 ring-[#eb4604] ring-offset-2 ring-offset-[#100c0b]' : '')}>
+                    <span className={'flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold ' + (active ? 'bg-[#eb4604] text-[#f5f3ee]' : 'bg-[#282723] text-[#99a57d]')}>{String(i + 1).padStart(2, '0')}</span>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-semibold">{s.label}</span>
+                        <span className="rounded-full bg-[#282723] px-2 py-1 text-[9px] uppercase tracking-[.1em] text-[#99a57d]">{style.label}</span>
+                      </div>
+                      <p className="mt-1 truncate text-xs text-[#99a57d]">{s.have || s.missing}</p>
                     </div>
-                    <ArrowRight size={16} className="text-[#99a57d]" />
-                  </div>
-                </button>
-                {i < map.length - 1 && <div className="py-1 text-center text-[10px] uppercase tracking-[.14em] text-[#99a57d] sm:text-left sm:pl-2">depends on the link above</div>}
-              </div>
-            ))}
+                    <ArrowRight size={15} className="shrink-0 text-[#99a57d] transition-transform group-hover:translate-x-1" />
+                  </button>
+                  {i < map.length - 1 && <div className="flex h-7 items-center justify-center"><ArrowDown size={14} className="text-[#282723]" /></div>}
+                </div>
+              )
+            })}
           </div>
         </div>
 
-        <aside className="border-2 border-[#282723] bg-[#1c1b17] lg:sticky lg:top-24">
-          <div className="border-b-2 border-[#282723] px-5 py-4">
-            <p className="text-[10px] font-semibold uppercase tracking-[.16em] text-[#99a57d]">Inspecting</p>
-            <h2 className="mt-2 text-xl font-semibold">{open.label}</h2>
+        <aside className="overflow-hidden rounded-[1.5rem] border border-[#282723] bg-[#1c1b17] lg:sticky lg:top-24">
+          <div className="border-b border-[#282723] bg-[#100c0b] p-5">
+            <p className="text-[10px] font-semibold uppercase tracking-[.16em] text-[#99a57d]">Node {String(openIndex + 1).padStart(2, '0')}</p>
+            <h2 className="mt-2 text-2xl font-semibold">{open.label}</h2>
           </div>
-          <div className="divide-y divide-line">
-            <section className="p-5"><p className="mb-2 text-[10px] font-semibold uppercase tracking-[.14em] text-[#99a57d]">Established</p><p className="text-sm leading-6 text-[#f5f3ee]/75">{open.have || 'Nothing established here yet.'}</p></section>
-            <section className="bg-[#282723] p-5"><p className="mb-2 text-[10px] font-semibold uppercase tracking-[.14em] text-[#99a57d]">Gap</p><p className="text-sm leading-6 text-[#f5f3ee]/75">{open.missing || 'The signal is present. Strengthen it with evidence.'}</p></section>
-            <section className="p-5"><p className="mb-2 text-[10px] font-semibold uppercase tracking-[.14em] text-[#99a57d]">Evidence to look for</p><p className="text-sm leading-6 text-[#f5f3ee]/75">{open.evidence}</p></section>
-            <section className="p-5"><p className="mb-2 text-[10px] font-semibold uppercase tracking-[.14em] text-[#99a57d]">Why it connects</p><p className="text-sm leading-6 text-[#f5f3ee]/75">{open.connection}</p></section>
+          <div className="space-y-0">
+            <section className="p-5">
+              <p className="text-[10px] font-semibold uppercase tracking-[.14em] text-[#99a57d]">What Pitch found</p>
+              <p className="mt-2 text-sm leading-6 text-[#f5f3ee]/80">{open.have || 'Nothing established here yet.'}</p>
+            </section>
+            <section className="border-y border-[#282723] bg-[#282723]/45 p-5">
+              <p className="text-[10px] font-semibold uppercase tracking-[.14em] text-[#eb4604]">What is open</p>
+              <p className="mt-2 text-sm leading-6 text-[#f5f3ee]/75">{open.missing || 'The signal is present. Strengthen it with concrete evidence.'}</p>
+            </section>
+            <section className="p-5">
+              <p className="text-[10px] font-semibold uppercase tracking-[.14em] text-[#99a57d]">Evidence to look for</p>
+              <p className="mt-2 text-sm leading-6 text-[#f5f3ee]/75">{open.evidence}</p>
+            </section>
+            <section className="border-t border-[#282723] p-5">
+              <p className="text-[10px] font-semibold uppercase tracking-[.14em] text-[#99a57d]">Why it connects</p>
+              <p className="mt-2 text-sm leading-6 text-[#f5f3ee]/75">{open.connection}</p>
+            </section>
           </div>
-          <div className="border-t-2 border-[#282723] p-5">
-            <button type="button" onClick={() => navigate('/app/pitch')} className="inline-flex w-full items-center justify-center gap-2 bg-[#eb4604] px-4 py-3 text-sm font-semibold text-[#171614] hover:bg-[#eb4604]-dark">Build the draft <ArrowRight size={15} /></button>
+          <div className="border-t border-[#282723] p-5">
+            <button type="button" onClick={() => navigate('/app/pitch')} className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#eb4604] px-4 py-3 text-sm font-semibold text-[#f5f3ee] hover:bg-[#f77e0d]">Build the draft <ArrowRight size={15} /></button>
           </div>
         </aside>
       </div>
