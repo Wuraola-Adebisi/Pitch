@@ -76,7 +76,6 @@ export default function Landing() {
                   <textarea
                     value={text}
                     onChange={(e) => setText(e.target.value)}
-                    placeholder={EXAMPLE}
                     rows={7}
                     maxLength={1500}
                     aria-label="Idea to analyse"
