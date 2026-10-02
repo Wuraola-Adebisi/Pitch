@@ -16,14 +16,14 @@ export default function Header() {
   const activeIndex = Math.max(0, steps.findIndex((s) => s.path === pathname))
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-[#282723] bg-[#100c0b]/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center gap-5 px-5 py-3.5 sm:px-8">
-        <Link to="/" className="flex shrink-0 items-center gap-2.5 font-display text-lg font-bold tracking-[-0.04em]">
-          <span className="flex h-7 w-7 items-center justify-center bg-ink text-[11px] font-bold text-white">P</span>
+        <Link to="/" className="flex shrink-0 items-center gap-3 font-display text-lg font-bold tracking-[-0.04em]">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#eb4604] text-[11px] font-bold text-[#f5f3ee]">P</span>
           <span className="hidden sm:inline">Pitch</span>
         </Link>
         <nav className="flex flex-1 justify-center overflow-x-auto" aria-label="Pitch workflow">
-          <div className="flex min-w-max items-center gap-0">
+          <div className="flex min-w-max items-center gap-1 rounded-full border border-[#282723] bg-[#1c1b17] p-1">
             {steps.map((s, i) => {
               const active = pathname === s.path
               const completed = i < activeIndex
@@ -32,8 +32,8 @@ export default function Header() {
                   key={s.path}
                   to={s.path}
                   aria-current={active ? 'step' : undefined}
-                  className={'border-b-2 px-3 py-2 text-xs font-medium transition-colors sm:px-4 sm:text-[13px] ' + (
-                    active ? 'border-ink text-ink' : completed ? 'border-transparent text-ink/60 hover:text-ink' : 'border-transparent text-ink/30 hover:text-ink'
+                  className={'rounded-full px-3.5 py-2 text-xs font-medium transition-colors sm:px-4 sm:text-[13px] ' + (
+                    active ? 'bg-[#eb4604] text-[#f5f3ee]' : completed ? 'text-[#f5f3ee]/70 hover:text-[#f5f3ee]' : 'text-[#99a57d] hover:text-[#f5f3ee]'
                   )}
                 >
                   {s.label}
@@ -45,7 +45,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => { if (window.confirm('Start a new idea? Your current pitch will be cleared.')) reset() }}
-          className="hidden shrink-0 items-center gap-1.5 border border-line bg-card px-3 py-2 text-xs font-medium text-muted transition-colors hover:border-ink hover:text-ink sm:inline-flex"
+          className="hidden shrink-0 items-center gap-1.5 border border-[#282723] bg-[#1c1b17] px-3 py-2 text-xs font-medium text-[#99a57d] transition-colors hover:border-[#eb4604] hover:text-[#f5f3ee] sm:inline-flex"
         >
           <RotateCcw size={13} /> New
         </button>
