@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, ShieldCheck, WandSparkles, Workflow } from 'lucide-react'
+import { ArrowRight, Eye, ShieldCheck, Workflow } from 'lucide-react'
 
 export default function About() {
   return (
@@ -14,7 +14,7 @@ export default function About() {
         <div className="mt-16 grid gap-3 md:grid-cols-3">
           {[
             [Workflow, 'A complete loop', 'Idea → diagnosis → map → draft → challenge.'],
-            [WandSparkles, 'Useful without theatre', 'The current MVP uses local rules instead of pretending a remote model is doing work it is not doing.'],
+            [Eye, 'Useful without theatre', 'The current MVP uses local rules instead of pretending a remote model is doing work it is not doing.'],
             [ShieldCheck, 'Local by default', 'There is no account or backend in the MVP. Your current idea stays in browser storage.'],
           ].map(([Icon, title, body]) => (
             <div key={String(title)} className="rounded-2xl border border-[#282723] bg-[#1c1b17] p-6">
