@@ -1,5 +1,5 @@
 import { Navigate, useNavigate } from 'react-router-dom'
-import { ArrowRight, Check, ChevronRight, Pencil, X } from 'lucide-react'
+import { ArrowRight, Check, Pencil, X } from 'lucide-react'
 import { usePitch } from '../lib/usePitch'
 
 const FIELDS = [

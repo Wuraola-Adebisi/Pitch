@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, RotateCcw, Target } from 'lucide-react'
+import { ArrowLeft, ArrowRight, RotateCcw } from 'lucide-react'
 import { usePitch } from '../lib/usePitch'
 
 export default function Challenge() {
