@@ -35,37 +35,37 @@ export default function Landing() {
   }
 
   return (
-    <div className="min-h-screen bg-[#171614]">
+    <div className="min-h-screen bg-paper">
       <LandingNav />
       <main>
         <section className="relative overflow-hidden px-5 pb-24 pt-20 sm:px-8 sm:pb-32 sm:pt-28">
-          <div className="pointer-events-none absolute left-1/2 top-16 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-[#eb4604]/[0.07] blur-3xl" />
+          <div className="pointer-events-none absolute left-1/2 top-16 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-coral/[0.07] blur-3xl" />
           <div className="mx-auto max-w-7xl">
             <div className="relative mx-auto max-w-5xl text-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#282723] bg-[#1c1b17] px-4 py-2 text-[11px] font-semibold uppercase tracking-[.16em] text-[#99a57d]">
+              <div className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 text-[11px] font-semibold uppercase tracking-[.16em] text-muted">
                 A workspace for better arguments
               </div>
               <h1 className="mx-auto mt-8 max-w-5xl font-display text-5xl font-bold leading-[.88] tracking-[-.065em] sm:text-7xl lg:text-[7rem]">
-                Turn the messy idea into a <span className="text-[#eb4604]">case.</span>
+                Turn the messy idea into a <span className="text-coral">case.</span>
               </h1>
-              <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-[#f5f3ee]/65 sm:text-xl">
+              <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-ink/65 sm:text-xl">
                 Pitch helps you inspect an idea, trace its logic, build a grounded draft, and find the questions it still needs to answer.
               </p>
             </div>
 
             <div className="relative mx-auto mt-14 max-w-5xl">
-              <div className="absolute -inset-8 rounded-[3rem] bg-[#eb4604]/[0.035] blur-2xl" />
-              <div className="relative rounded-[2rem] border border-[#282723] bg-[#1c1b17] p-2 shadow-2xl shadow-black/40">
-                <div className="rounded-[1.5rem] border border-[#282723] bg-[#100c0b] p-5 sm:p-7">
+              <div className="absolute -inset-8 rounded-[3rem] bg-coral/[0.035] blur-2xl" />
+              <div className="relative rounded-[2rem] border border-line bg-card p-2 shadow-2xl shadow-black/40">
+                <div className="rounded-[1.5rem] border border-line bg-smoky p-5 sm:p-7">
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#eb4604] text-xs font-bold text-[#f5f3ee]">P</span>
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-coral text-xs font-bold text-ink">P</span>
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-[.14em] text-[#99a57d]">Live workspace</p>
-                        <p className="mt-1 text-sm text-[#f5f3ee]/50">Start with the version you actually have.</p>
+                        <p className="text-xs font-semibold uppercase tracking-[.14em] text-muted">Live workspace</p>
+                        <p className="mt-1 text-sm text-ink/50">Start with the version you actually have.</p>
                       </div>
                     </div>
-                    <span className="rounded-full border border-[#282723] px-3 py-1.5 font-mono text-[10px] text-[#99a57d]">01 / IDEA</span>
+                    <span className="rounded-full border border-line px-3 py-1.5 font-mono text-[11px] text-muted">01 / IDEA</span>
                   </div>
 
                   <textarea
@@ -74,29 +74,29 @@ export default function Landing() {
                     rows={7}
                     maxLength={1500}
                     aria-label="Idea to analyse"
-                    className="mt-6 w-full resize-none rounded-2xl border border-[#282723] bg-[#1c1b17] p-5 text-base leading-7 text-[#f5f3ee] placeholder:text-[#f5f3ee]/25 focus:border-[#eb4604] focus:outline-none sm:p-6 sm:text-lg"
+                    className="mt-6 w-full resize-none rounded-2xl border border-line bg-card p-5 text-base leading-7 text-ink placeholder:text-ink/25 focus:border-[#eb4604] focus:outline-none sm:p-6 sm:text-lg"
                   />
 
                   <div className="mt-4 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-                    <div className="flex items-center gap-2 text-xs text-[#99a57d]">
+                    <div className="flex items-center gap-2 text-xs text-muted">
                       <span className="h-1.5 w-1.5 rounded-full bg-[#99a57d]" />
                       Nothing leaves this browser in the MVP
                     </div>
                     <div className="flex items-center gap-4">
-                      <button type="button" onClick={() => setText(EXAMPLE)} className="text-xs font-medium text-[#99a57d] underline decoration-[#282723] underline-offset-4 hover:text-[#f5f3ee]">Use an example</button>
-                      <button type="button" onClick={go} disabled={!text.trim()} className="inline-flex items-center gap-2 rounded-full bg-[#eb4604] px-5 py-3 text-sm font-semibold text-[#f5f3ee] transition-colors hover:bg-[#f77e0d] disabled:opacity-30">
+                      <button type="button" onClick={() => setText(EXAMPLE)} className="text-xs font-medium text-muted underline decoration-[#282723] underline-offset-4 hover:text-ink">Use an example</button>
+                      <button type="button" onClick={go} disabled={!text.trim()} className="inline-flex items-center gap-2 rounded-full bg-coral px-5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-coral-dark disabled:opacity-30">
                         Analyse idea <ArrowRight size={15} />
                       </button>
                     </div>
                   </div>
                 </div>
 
-                <div className="hidden items-center justify-center gap-2 px-4 pb-2 pt-3 text-[10px] uppercase tracking-[.12em] text-[#99a57d] sm:flex">
+                <div className="hidden items-center justify-center gap-2 px-4 pb-2 pt-3 text-[11px] uppercase tracking-[.12em] text-muted sm:flex">
                   <span className="rounded-full bg-[#282723] px-3 py-1">Idea</span>
                   <span className="text-[#282723]">→</span>
                   <span className="rounded-full bg-[#282723] px-3 py-1">Diagnosis</span>
                   <span className="text-[#282723]">→</span>
-                  <span className="rounded-full bg-[#eb4604]/15 px-3 py-1 text-[#eb4604]">Map</span>
+                  <span className="rounded-full bg-coral/15 px-3 py-1 text-coral">Map</span>
                   <span className="text-[#282723]">→</span>
                   <span className="rounded-full bg-[#282723] px-3 py-1">Draft</span>
                   <span className="text-[#282723]">→</span>
@@ -107,26 +107,26 @@ export default function Landing() {
 
             <div className="relative mx-auto mt-8 grid max-w-5xl gap-3 sm:grid-cols-4">
               {steps.map((step, i) => (
-                <div key={step.n} className="group rounded-2xl border border-[#282723] bg-[#1c1b17]/75 p-5 transition-transform hover:-translate-y-1">
+                <div key={step.n} className="group rounded-2xl border border-line bg-card/75 p-5 transition-transform hover:-translate-y-1">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-[10px] font-semibold tracking-[.14em] text-[#eb4604]">{step.n}</span>
+                    <span className="font-mono text-[11px] font-semibold tracking-[.14em] text-coral">{step.n}</span>
                     {i === 3 && <span className="h-2 w-2 rounded-full bg-[#99a57d]" />}
                   </div>
                   <h2 className="mt-7 text-lg font-semibold">{step.title}</h2>
-                  <p className="mt-2 text-sm leading-6 text-[#99a57d]">{step.body}</p>
+                  <p className="mt-2 text-sm leading-6 text-muted">{step.body}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="method" className="border-y border-[#282723] bg-[#100c0b] px-5 py-20 sm:px-8 sm:py-28">
+        <section id="method" className="border-y border-line bg-smoky px-5 py-20 sm:px-8 sm:py-28">
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">Inside Pitch</p>
+                <p className="text-xs font-semibold uppercase tracking-[.16em] text-muted">Inside Pitch</p>
                 <h2 className="mt-4 max-w-xl font-display text-4xl font-bold leading-[.94] tracking-[-.05em] sm:text-6xl">Your argument, made inspectable.</h2>
-                <p className="mt-6 max-w-lg leading-7 text-[#99a57d]">Pitch is deliberately not a button that turns a sentence into a polished-looking presentation. It exposes the reasoning underneath.</p>
+                <p className="mt-6 max-w-lg leading-7 text-muted">Pitch is deliberately not a button that turns a sentence into a polished-looking presentation. It exposes the reasoning underneath.</p>
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2">
@@ -136,13 +136,13 @@ export default function Landing() {
                   [FileText, 'Draft', 'Build a structured case while keeping unsupported sections visibly unfinished.'],
                   [MessageCircleQuestion, 'Push back', 'Turn gaps into questions you can answer before the argument meets a real person.'],
                 ].map(([Icon, title, body], i) => (
-                  <div key={String(title)} className="rounded-2xl border border-[#282723] bg-[#1c1b17] p-6">
+                  <div key={String(title)} className="rounded-2xl border border-line bg-card p-6">
                     <div className="flex items-center justify-between">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#282723] text-[#f5f3ee]"><Icon size={16} /></div>
-                      <span className="font-mono text-[10px] text-[#eb4604]">0{i + 1}</span>
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#282723] text-ink"><Icon size={16} /></div>
+                      <span className="font-mono text-[11px] text-coral">0{i + 1}</span>
                     </div>
                     <h3 className="mt-7 text-xl font-semibold">{String(title)}</h3>
-                    <p className="mt-3 text-sm leading-6 text-[#99a57d]">{String(body)}</p>
+                    <p className="mt-3 text-sm leading-6 text-muted">{String(body)}</p>
                   </div>
                 ))}
               </div>
@@ -154,24 +154,24 @@ export default function Landing() {
           <div className="mx-auto max-w-7xl">
             <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">Argument map</p>
+                <p className="text-xs font-semibold uppercase tracking-[.16em] text-muted">Argument map</p>
                 <h2 className="mt-4 max-w-2xl font-display text-4xl font-bold leading-[.94] tracking-[-.05em] sm:text-6xl">See the chain, not a pile of cards.</h2>
               </div>
-              <p className="max-w-sm text-sm leading-6 text-[#99a57d]">A missing link should be obvious. Pitch does not quietly fill the hole for you.</p>
+              <p className="max-w-sm text-sm leading-6 text-muted">A missing link should be obvious. Pitch does not quietly fill the hole for you.</p>
             </div>
-            <div className="overflow-hidden rounded-[2rem] border border-[#282723] bg-[#1c1b17] p-2 shadow-2xl shadow-black/20">
+            <div className="overflow-hidden rounded-[2rem] border border-line bg-card p-2 shadow-2xl shadow-black/20">
               <MapPreview />
             </div>
           </div>
         </section>
 
-        <section className="border-y border-[#282723] bg-[#100c0b] px-5 py-20 sm:px-8 sm:py-28">
+        <section className="border-y border-line bg-smoky px-5 py-20 sm:px-8 sm:py-28">
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">A real workflow</p>
+              <p className="text-xs font-semibold uppercase tracking-[.16em] text-muted">A real workflow</p>
               <h2 className="mt-4 max-w-xl font-display text-4xl font-bold leading-[.94] tracking-[-.05em] sm:text-6xl">Five screens. One argument.</h2>
-              <p className="mt-6 max-w-lg leading-7 text-[#99a57d]">You can move through the whole thing without creating an account, connecting a model, or pretending the rough idea was finished.</p>
-              <button type="button" onClick={() => navigate('/app')} className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#eb4604] px-6 py-3.5 text-sm font-semibold text-[#f5f3ee] hover:bg-[#f77e0d]">
+              <p className="mt-6 max-w-lg leading-7 text-muted">You can move through the whole thing without creating an account, connecting a model, or pretending the rough idea was finished.</p>
+              <button type="button" onClick={() => navigate('/app')} className="mt-8 inline-flex items-center gap-2 rounded-full bg-coral px-6 py-3.5 text-sm font-semibold text-ink hover:bg-coral-dark">
                 Enter the workspace <ArrowRight size={16} />
               </button>
             </div>
@@ -183,10 +183,10 @@ export default function Landing() {
                 ['04', 'Draft', 'Turn the material into a case.'],
                 ['05', 'Challenge', 'Find the unanswered questions.'],
               ].map(([n, title, body]) => (
-                <div key={n} className="rounded-2xl border border-[#282723] bg-[#1c1b17] p-5">
-                  <span className="font-mono text-[10px] text-[#eb4604]">{n}</span>
+                <div key={n} className="rounded-2xl border border-line bg-card p-5">
+                  <span className="font-mono text-[11px] text-coral">{n}</span>
                   <h3 className="mt-5 font-semibold">{title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-[#99a57d]">{body}</p>
+                  <p className="mt-1 text-sm leading-6 text-muted">{body}</p>
                 </div>
               ))}
             </div>
@@ -194,21 +194,21 @@ export default function Landing() {
         </section>
 
         <section className="px-5 py-20 sm:px-8 sm:py-28">
-          <div className="mx-auto max-w-7xl rounded-[2rem] border border-[#282723] bg-[#1c1b17] p-7 sm:p-12">
+          <div className="mx-auto max-w-7xl rounded-[2rem] border border-line bg-card p-7 sm:p-12">
             <div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">Built for unfinished thinking</p>
+                <p className="text-xs font-semibold uppercase tracking-[.16em] text-muted">Built for unfinished thinking</p>
                 <h2 className="mt-4 max-w-xl font-display text-4xl font-bold leading-[.94] tracking-[-.05em] sm:text-6xl">Bring the messy version.</h2>
-                <p className="mt-5 max-w-lg leading-7 text-[#f5f3ee]/60">The useful output is not a prettier sentence. It is knowing which sentence needs evidence, which claim is carrying the case, and what someone is likely to question.</p>
+                <p className="mt-5 max-w-lg leading-7 text-ink/60">The useful output is not a prettier sentence. It is knowing which sentence needs evidence, which claim is carrying the case, and what someone is likely to question.</p>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 {['Claim', 'Assumption', 'Evidence', 'Question'].map((label, i) => (
-                  <div key={label} className="flex items-center gap-3 rounded-2xl border border-[#282723] bg-[#171614] p-4">
-                    <span className={'flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ' + (i === 1 || i === 3 ? 'bg-[#eb4604]/15 text-[#eb4604]' : 'bg-[#282723] text-[#f5f3ee]')}>
+                  <div key={label} className="flex items-center gap-3 rounded-2xl border border-line bg-paper p-4">
+                    <span className={'flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ' + (i === 1 || i === 3 ? 'bg-coral/15 text-coral' : 'bg-[#282723] text-ink')}>
                       {i === 0 ? 'C' : i === 1 ? 'A' : i === 2 ? 'E' : '?'}
                     </span>
                     <span className="text-sm font-medium">{label}</span>
-                    <Check size={14} className="ml-auto text-[#99a57d]" />
+                    <Check size={14} className="ml-auto text-muted" />
                   </div>
                 ))}
               </div>
@@ -219,17 +219,17 @@ export default function Landing() {
         <section className="px-5 pb-24 sm:px-8 sm:pb-32">
           <div className="mx-auto max-w-3xl">
             <div className="mb-8">
-              <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">Questions</p>
+              <p className="text-xs font-semibold uppercase tracking-[.16em] text-muted">Questions</p>
               <h2 className="mt-4 font-display text-4xl font-bold tracking-[-.04em] sm:text-5xl">Before you use it.</h2>
             </div>
-            <div className="rounded-2xl border border-[#282723] bg-[#1c1b17] p-2">
+            <div className="rounded-2xl border border-line bg-card p-2">
               {faqs.map(([question, answer], i) => (
-                <div key={question} className="border-b border-[#282723] last:border-b-0">
+                <div key={question} className="border-b border-line last:border-b-0">
                   <button type="button" onClick={() => setOpenFaq(openFaq === i ? null : i)} className="flex w-full items-center justify-between gap-6 rounded-xl px-4 py-5 text-left">
                     <span className="font-semibold">{question}</span>
-                    <ChevronDown size={18} className={'shrink-0 text-[#99a57d] transition-transform ' + (openFaq === i ? 'rotate-180' : '')} />
+                    <ChevronDown size={18} className={'shrink-0 text-muted transition-transform ' + (openFaq === i ? 'rotate-180' : '')} />
                   </button>
-                  {openFaq === i && <p className="max-w-2xl px-4 pb-5 pr-8 leading-7 text-[#99a57d]">{answer}</p>}
+                  {openFaq === i && <p className="max-w-2xl px-4 pb-5 pr-8 leading-7 text-muted">{answer}</p>}
                 </div>
               ))}
             </div>
