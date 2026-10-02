@@ -48,7 +48,7 @@ export default function Input() {
                   {text && <button type="button" onClick={() => setText('')} className="inline-flex items-center gap-1 text-[10px] text-[#99a57d] hover:text-[#f5f3ee]"><RotateCcw size={11} />Clear</button>}
                 </div>
               </div>
-              <textarea autoFocus value={text} onChange={(e) => setText(e.target.value)} onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') go() }} placeholder={EXAMPLE} rows={11} maxLength={1500} aria-label="Your idea" className="mt-5 w-full resize-none rounded-2xl border border-[#282723] bg-[#282723] p-5 text-lg leading-7 text-[#f5f3ee] placeholder:text-[#f5f3ee]/25 focus:border-[#eb4604] focus:outline-none sm:p-7 sm:text-xl" />
+              <textarea autoFocus value={text} onChange={(e) => setText(e.target.value)} onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') go() }} rows={11} maxLength={1500} aria-label="Your idea" className="mt-5 w-full resize-none rounded-2xl border border-[#282723] bg-[#282723] p-5 text-lg leading-7 text-[#f5f3ee] placeholder:text-[#f5f3ee]/25 focus:border-[#eb4604] focus:outline-none sm:p-7 sm:text-xl" />
               <div className="mt-4 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
                 <button type="button" onClick={() => setText(EXAMPLE)} className="px-1 text-xs font-medium text-[#99a57d] underline decoration-[#282723] underline-offset-4 hover:text-[#f5f3ee]">Use an example</button>
                 <div className="flex items-center gap-4">
