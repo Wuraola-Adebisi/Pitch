@@ -26,10 +26,7 @@ function readSaved(): string {
 
 export function PitchProvider({ children }: { children: ReactNode }) {
   const [raw, setRaw] = useState(readSaved)
-  const [diagnosis, setDiagnosis] = useState<Diagnosis | null>(() => {
-    const saved = readSaved()
-    return saved ? diagnose(saved) : null
-  })
+  const diagnosis = useMemo<Diagnosis | null>(() => (raw ? diagnose(raw) : null), [raw])
 
   const map = useMemo(() => (diagnosis ? buildArgumentMap(diagnosis) : []), [diagnosis])
   const challenges = useMemo(() => (diagnosis ? generateChallenges(diagnosis, map) : []), [diagnosis, map])
@@ -47,12 +44,10 @@ export function PitchProvider({ children }: { children: ReactNode }) {
   const submit = (text: string) => {
     const clean = text.trim()
     setRaw(clean)
-    setDiagnosis(clean ? diagnose(clean) : null)
   }
 
   const reset = () => {
     setRaw('')
-    setDiagnosis(null)
   }
 
   return (
