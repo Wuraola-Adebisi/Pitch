@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { RotateCcw } from 'lucide-react'
 import { usePitch } from '../lib/usePitch'
 import ConfirmResetDialog from './ConfirmResetDialog'
@@ -15,6 +15,7 @@ const steps = [
 export default function Header() {
   const { pathname } = useLocation()
   const { reset, raw, diagnosis, pitch } = usePitch()
+  const navigate = useNavigate()
   const [confirmOpen, setConfirmOpen] = useState(false)
   const activeIndex = Math.max(0, steps.findIndex((s) => s.path === pathname))
 
@@ -43,7 +44,7 @@ export default function Header() {
           <button type="button" onClick={() => setConfirmOpen(true)} className="inline-flex shrink-0 items-center gap-1.5 border border-line bg-card px-3 py-2 text-xs font-medium text-muted transition-colors hover:border-coral hover:text-ink"><RotateCcw size={13} /><span className="hidden sm:inline">New</span></button>
         </div>
       </header>
-      <ConfirmResetDialog open={confirmOpen} onClose={() => setConfirmOpen(false)} onConfirm={() => { reset(); setConfirmOpen(false); }} onCopy={copyDraft} hasDraft={Boolean(pitch)} />
+      <ConfirmResetDialog open={confirmOpen} onClose={() => setConfirmOpen(false)} onConfirm={() => { reset(); setConfirmOpen(false); navigate('/app') }} onCopy={copyDraft} hasDraft={Boolean(pitch)} />
     </>
   )
 }
