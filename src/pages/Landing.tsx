@@ -89,7 +89,7 @@ export default function Landing() {
             </div>
 
             <div className="mt-20 grid gap-3 sm:grid-cols-4">
-              {steps.map((step, i) => (
+              {steps.map((step) => (
                 <div key={step.n} className="rounded-2xl border border-[#282723] bg-[#1c1b17] p-5 sm:p-6">
                   <p className="font-mono text-[10px] font-semibold tracking-[.14em] text-[#eb4604]">{step.n}</p>
                   <h2 className="mt-6 text-lg font-semibold">{step.title}</h2>
