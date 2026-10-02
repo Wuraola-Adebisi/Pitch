@@ -4,15 +4,16 @@ import Header from './Header'
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-[#171614]">
       <Header />
       <main className="flex-1">{children}</main>
-      <footer className="border-t border-line">
-        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-2 px-4 py-5 text-xs text-ink/40 sm:flex-row sm:px-6">
-          <span>Pitch · Your idea stays on this device in the MVP.</span>
+      <footer className="border-t border-[#282723] bg-[#100c0b]">
+        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-5 py-5 text-xs text-[#99a57d] sm:flex-row sm:px-8">
+          <span>Pitch · Your current idea stays in this browser in the MVP.</span>
           <span className="flex gap-4">
-            <Link to="/privacy" className="transition-colors hover:text-ink/70">Privacy</Link>
-            <Link to="/terms" className="transition-colors hover:text-ink/70">Terms</Link>
+            <Link to="/privacy" className="hover:text-[#f5f3ee]">Privacy</Link>
+            <Link to="/terms" className="hover:text-[#f5f3ee]">Terms</Link>
+            <Link to="/" className="hover:text-[#f5f3ee]">Exit workspace</Link>
           </span>
         </div>
       </footer>
