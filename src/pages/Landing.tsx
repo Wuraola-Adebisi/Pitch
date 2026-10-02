@@ -50,22 +50,40 @@ export default function Landing() {
               <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-[#f5f3ee]/65 sm:text-xl">
                 Pitch helps you inspect an idea, trace its logic, build a grounded draft, and find the questions it still needs to answer.
               </p>
-              <div className="mt-7 flex flex-wrap justify-center gap-2.5">
-                <span className="rounded-full border border-[#282723] bg-[#1c1b17] px-3.5 py-2 text-xs text-[#99a57d]">Argument first</span>
-                <span className="rounded-full border border-[#282723] bg-[#1c1b17] px-3.5 py-2 text-xs text-[#99a57d]">Runs locally</span>
-                <span className="rounded-full border border-[#282723] bg-[#1c1b17] px-3.5 py-2 text-xs text-[#99a57d]">No fake AI</span>
-              </div>
             </div>
 
             <div className="relative mx-auto mt-14 max-w-5xl">
               <div className="absolute -inset-8 rounded-[3rem] bg-[#eb4604]/[0.035] blur-2xl" />
               <div className="relative rounded-[2rem] border border-[#282723] bg-[#1c1b17] p-2 shadow-2xl shadow-black/40">
                 <div className="rounded-[1.5rem] border border-[#282723] bg-[#100c0b] p-5 sm:p-7">
+                  <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[.14em] text-[#99a57d]">See it in action</p>
+                      <p className="mt-1 max-w-xl text-sm leading-6 text-[#f5f3ee]/50">Start with these three examples. One is stronger, one is weaker, and one is close but still has a gap.</p>
+                    </div>
+                    <span className="rounded-full border border-[#282723] px-3 py-1.5 font-mono text-[10px] text-[#99a57d]">03 TEST CASES</span>
+                  </div>
+
+                  <div className="grid gap-3 md:grid-cols-3">
+                    {PITCH_EXAMPLES.map((example) => (
+                      <button key={example.title} type="button" onClick={() => setText(example.text)} className="group rounded-2xl border border-[#282723] bg-[#1c1b17] p-5 text-left transition-colors hover:border-[#eb4604]">
+                        <div className="flex items-center justify-between gap-3">
+                          <span className="text-sm font-semibold text-[#f5f3ee]">{example.title}</span>
+                          <span className={example.quality === 'Stronger' ? 'text-[9px] font-semibold uppercase tracking-[.08em] text-[#99a57d]' : 'text-[9px] font-semibold uppercase tracking-[.08em] text-[#f77e0d]'}>{example.quality}</span>
+                        </div>
+                        <p className="mt-4 text-sm leading-6 text-[#f5f3ee]/55">{example.text}</p>
+                        <span className="mt-5 inline-flex text-[10px] font-semibold uppercase tracking-[.1em] text-[#99a57d] group-hover:text-[#f5f3ee]">Use this example →</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-2 rounded-[1.5rem] border border-[#282723] bg-[#100c0b] p-5 sm:p-7">
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <div className="flex items-center gap-3">
                       <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#eb4604] text-xs font-bold text-[#f5f3ee]">P</span>
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-[.14em] text-[#99a57d]">Live workspace</p>
+                        <p className="text-xs font-semibold uppercase tracking-[.14em] text-[#99a57d]">Now try yours</p>
                         <p className="mt-1 text-sm text-[#f5f3ee]/50">Start with the version you actually have.</p>
                       </div>
                     </div>
@@ -86,36 +104,13 @@ export default function Landing() {
                       <span className="h-1.5 w-1.5 rounded-full bg-[#99a57d]" />
                       Nothing leaves this browser in the MVP
                     </div>
-                    <div className="flex items-center gap-4">
-                      <button type="button" onClick={go} disabled={!text.trim()} className="inline-flex items-center gap-2 rounded-full bg-[#eb4604] px-5 py-3 text-sm font-semibold text-[#f5f3ee] transition-colors hover:bg-[#f77e0d] disabled:opacity-30">
-                        Analyse idea <ArrowRight size={15} />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="border-t border-[#282723] px-5 py-5 sm:px-7">
-                <div className="mb-3 flex items-end justify-between gap-4">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[.14em] text-[#99a57d]">Test cases</p>
-                    <p className="mt-1 text-xs text-[#f5f3ee]/40">Compare a stronger argument with one that still needs work.</p>
-                  </div>
-                  <span className="hidden text-[10px] uppercase tracking-[.1em] text-[#99a57d]/50 sm:inline">6 examples</span>
-                </div>
-                <div className="grid gap-2 sm:grid-cols-2">
-                  {PITCH_EXAMPLES.map((example) => (
-                    <button key={example.title} type="button" onClick={() => setText(example.text)} className="rounded-xl border border-[#282723] bg-[#1c1b17] p-3 text-left transition-colors hover:border-[#eb4604]">
-                      <div className="flex items-center justify-between gap-3">
-                        <span className="text-xs font-semibold text-[#f5f3ee]">{example.title}</span>
-                        <span className="text-[9px] font-semibold uppercase tracking-[.07em] text-[#99a57d]">{example.quality}</span>
-                      </div>
-                      <p className="mt-1.5 line-clamp-2 text-xs leading-5 text-[#f5f3ee]/45">{example.text}</p>
+                    <button type="button" onClick={go} disabled={!text.trim()} className="inline-flex items-center gap-2 rounded-full bg-[#eb4604] px-5 py-3 text-sm font-semibold text-[#f5f3ee] transition-colors hover:bg-[#f77e0d] disabled:opacity-30">
+                      Analyse idea <ArrowRight size={15} />
                     </button>
-                  ))}
+                  </div>
                 </div>
-              </div>
 
-              <div className="hidden items-center justify-center gap-2 px-4 pb-2 pt-3 text-[10px] uppercase tracking-[.12em] text-[#99a57d] sm:flex">
+                <div className="hidden items-center justify-center gap-2 px-4 pb-2 pt-3 text-[10px] uppercase tracking-[.12em] text-[#99a57d] sm:flex">
                   <span className="rounded-full bg-[#282723] px-3 py-1">Idea</span>
                   <span className="text-[#282723]">→</span>
                   <span className="rounded-full bg-[#282723] px-3 py-1">Diagnosis</span>
