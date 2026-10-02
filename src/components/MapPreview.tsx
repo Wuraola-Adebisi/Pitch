@@ -1,6 +1,6 @@
 const stages = [
   { label: 'Problem', state: 'strong' as const },
-  { label: 'Why it matters', state: 'strong' as const },
+  { label: 'Audience', state: 'strong' as const },
   { label: 'Insight', state: 'weak' as const },
   { label: 'Solution', state: 'strong' as const },
   { label: 'Why now', state: 'weak' as const },
@@ -9,37 +9,53 @@ const stages = [
 ]
 
 const dot: Record<string, string> = {
-  strong: 'bg-mint',
+  strong: 'bg-ink',
   partial: 'bg-coral',
-  weak: 'bg-white/25',
-}
-
-const border: Record<string, string> = {
-  strong: 'border-mint/35 bg-mint/5',
-  partial: 'border-coral/35 bg-coral/5',
-  weak: 'border-dashed border-white/20',
+  weak: 'bg-coral/35',
 }
 
 export default function MapPreview() {
   return (
-    <div className="border border-white/15 bg-white/[.03] p-5 text-white sm:p-7">
-      <div className="grid gap-7 sm:grid-cols-[220px_1fr] sm:gap-10">
-        <div className="flex gap-2 overflow-x-auto sm:flex-col sm:overflow-visible">
-          {stages.map((s) => (
-            <div key={s.label} className={'flex shrink-0 items-center gap-2 border px-3 py-2 text-sm ' + border[s.state]}>
-              <span className={'h-1.5 w-1.5 ' + dot[s.state]} />
-              {s.label}
+    <div className="relative overflow-hidden bg-card p-5 text-ink sm:p-8">
+      <div className="absolute left-0 top-0 h-full w-1 bg-coral" />
+      <div className="mb-8 flex items-end justify-between gap-4 border-b border-line pb-5">
+        <div>
+          <p className="text-[10px] font-semibold uppercase tracking-[.18em] text-coral">The argument</p>
+          <p className="mt-2 text-sm text-muted">A chain, not a checklist.</p>
+        </div>
+        <span className="font-mono text-[10px] uppercase tracking-[.12em] text-muted">7 claims</span>
+      </div>
+
+      <div className="relative pl-2 sm:pl-5">
+        <div className="absolute bottom-5 left-[11px] top-5 w-px bg-line sm:left-[23px]" />
+        <div className="space-y-2">
+          {stages.map((stage, index) => (
+            <div key={stage.label} className="relative grid grid-cols-[20px_1fr] items-center gap-4 sm:grid-cols-[20px_1fr_110px] sm:gap-5">
+              <span className={'relative z-10 h-2.5 w-2.5 rounded-full border-2 border-card ' + dot[stage.state]} />
+              <div className={'flex min-h-12 items-center justify-between gap-4 border px-4 py-3 ' + (
+                stage.state === 'strong' ? 'border-ink bg-card' :
+                stage.state === 'partial' ? 'border-coral bg-[#fff4ef]' :
+                'border-dashed border-ink/25 bg-paper'
+              )}>
+                <span className="text-sm font-semibold">{stage.label}</span>
+                <span className="text-[10px] uppercase tracking-[.12em] text-muted">
+                  {stage.state === 'strong' ? 'established' : stage.state === 'partial' ? 'partial' : 'missing'}
+                </span>
+              </div>
+              {index < stages.length - 1 && <span className="hidden text-right text-[10px] uppercase tracking-[.12em] text-muted sm:block">leads to →</span>}
             </div>
           ))}
         </div>
-        <div className="border-t border-white/15 pt-6 sm:border-l sm:border-t-0 sm:pl-10 sm:pt-0">
-          <p className="mb-2 text-xs uppercase tracking-[.15em] text-mint">Insight</p>
-          <h3 className="mb-4 text-xl font-semibold">What's missing</h3>
-          <p className="mb-6 leading-7 text-white/65">
-            Not stated: the non-obvious reason this problem has stayed unsolved until now. Without it, the solution feels arbitrary instead of inevitable.
-          </p>
-          <p className="mb-2 text-xs uppercase tracking-[.15em] text-white/40">Evidence that would help</p>
-          <p className="text-white/65">One sentence on what everyone else gets wrong about this problem.</p>
+      </div>
+
+      <div className="mt-8 grid gap-px border border-line bg-line sm:grid-cols-2">
+        <div className="bg-paper p-4">
+          <p className="text-[10px] font-semibold uppercase tracking-[.14em] text-coral">Weak link</p>
+          <p className="mt-2 text-sm leading-6">The insight is not stated, so the solution has no clear reason to exist.</p>
+        </div>
+        <div className="bg-paper p-4">
+          <p className="text-[10px] font-semibold uppercase tracking-[.14em] text-muted">Useful evidence</p>
+          <p className="mt-2 text-sm leading-6">What changed that makes this problem worth solving now?</p>
         </div>
       </div>
     </div>
