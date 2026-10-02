@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ArrowRight, ChevronDown, CircleHelp, FileText, GitBranch, MessageCircleQuestion } from 'lucide-react'
+import { ArrowRight, Check, ChevronDown, CircleHelp, FileText, GitBranch, MessageCircleQuestion, Sparkles } from 'lucide-react'
 import { usePitch } from '../lib/usePitch'
 import LandingNav from '../components/LandingNav'
 import Footer from '../components/Footer'
@@ -9,16 +9,17 @@ import MapPreview from '../components/MapPreview'
 const EXAMPLE = "We're building a tool that helps independent retailers predict what stock they'll need before they reorder."
 
 const steps = [
-  { n: '01', title: 'Put it on the table', body: 'Start with the rough version. No deck, no polished language, no performance.' },
-  { n: '02', title: 'Pull it apart', body: 'See which claims are established, which are assumptions, and which need evidence.' },
-  { n: '03', title: 'Connect the case', body: 'Follow the logic from problem to solution instead of treating each point as a separate box.' },
-  { n: '04', title: 'Push back', body: 'Find the questions that could make someone hesitate, object, or ask for proof.' },
+  { n: '01', title: 'Start rough', body: 'Put the idea down before you start polishing the pitch.' },
+  { n: '02', title: 'Read what is there', body: 'Separate what you actually said from what the argument still assumes.' },
+  { n: '03', title: 'Trace the case', body: 'See how the problem, audience, solution, proof and ask depend on each other.' },
+  { n: '04', title: 'Pressure-test it', body: 'Surface the questions that could interrupt the case before somebody else does.' },
 ]
 
 const faqs = [
-  ['Is this a deck generator?', 'No. Pitch starts with the argument. It can produce a structured draft, but unsupported sections remain visible.'],
-  ['Does it send my idea to an AI model?', 'Not in this MVP. Analysis happens in your browser and the current idea is stored locally on your device.'],
-  ['What should I put in?', 'A product idea, startup concept, project proposal, service, or business case. A few honest sentences are enough.'],
+  ['Is this a deck generator?', 'No. Pitch starts with the reasoning underneath the deck. It can produce a structured draft, but unsupported sections remain visible.'],
+  ['Does it use an AI model?', 'Not in this MVP. The analysis runs in your browser using a local rule-based engine.'],
+  ['What can I put in?', 'A product idea, startup concept, service, project proposal, business case, or anything you need to make a clearer argument for.'],
+  ['Does Pitch save my idea?', 'The current idea is stored in your browser so the workflow survives a refresh. There is no account or remote database in this MVP.'],
 ]
 
 export default function Landing() {
@@ -37,62 +38,87 @@ export default function Landing() {
     <div className="min-h-screen bg-[#171614]">
       <LandingNav />
       <main>
-        <section className="overflow-hidden px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-24">
+        <section className="relative overflow-hidden px-5 pb-24 pt-20 sm:px-8 sm:pb-32 sm:pt-28">
+          <div className="pointer-events-none absolute left-1/2 top-16 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-[#eb4604]/[0.07] blur-3xl" />
           <div className="mx-auto max-w-7xl">
-            <div className="grid gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-center lg:gap-16">
-              <div>
-                <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">
-                  <span className="h-2 w-2 rounded-full bg-[#eb4604]" />A workspace for the argument
-                </div>
-                <h1 className="mt-7 max-w-5xl font-display text-5xl font-bold leading-[.92] tracking-[-.055em] sm:text-7xl lg:text-[6.8rem]">
-                  What are you <span className="text-[#eb4604]">actually saying?</span>
-                </h1>
-                <p className="mt-8 max-w-2xl text-lg leading-8 text-[#f5f3ee]/70 sm:text-xl">
-                  Pitch takes a rough idea apart, traces the logic underneath it, and shows you where the case is strong, assumed, or unfinished.
-                </p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <span className="rounded-full border border-[#282723] bg-[#1c1b17] px-3.5 py-2 text-xs text-[#99a57d]">Argument first</span>
-                  <span className="rounded-full border border-[#282723] bg-[#1c1b17] px-3.5 py-2 text-xs text-[#99a57d]">Local-first MVP</span>
-                  <span className="rounded-full border border-[#282723] bg-[#1c1b17] px-3.5 py-2 text-xs text-[#99a57d]">No fake AI</span>
-                </div>
+            <div className="relative mx-auto max-w-5xl text-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#282723] bg-[#1c1b17] px-4 py-2 text-[11px] font-semibold uppercase tracking-[.16em] text-[#99a57d]">
+                <Sparkles size={13} className="text-[#eb4604]" /> A workspace for better arguments
               </div>
+              <h1 className="mx-auto mt-8 max-w-5xl font-display text-5xl font-bold leading-[.88] tracking-[-.065em] sm:text-7xl lg:text-[7rem]">
+                Turn the messy idea into a <span className="text-[#eb4604]">case.</span>
+              </h1>
+              <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-[#f5f3ee]/65 sm:text-xl">
+                Pitch helps you inspect an idea, trace its logic, build a grounded draft, and find the questions it still needs to answer.
+              </p>
+              <div className="mt-7 flex flex-wrap justify-center gap-2.5">
+                <span className="rounded-full border border-[#282723] bg-[#1c1b17] px-3.5 py-2 text-xs text-[#99a57d]">Argument first</span>
+                <span className="rounded-full border border-[#282723] bg-[#1c1b17] px-3.5 py-2 text-xs text-[#99a57d]">Runs locally</span>
+                <span className="rounded-full border border-[#282723] bg-[#1c1b17] px-3.5 py-2 text-xs text-[#99a57d]">No fake AI</span>
+              </div>
+            </div>
 
-              <div className="rounded-[1.5rem] bg-[#1c1b17] p-2 shadow-2xl shadow-black/30">
-                <div className="rounded-[1.25rem] border border-[#282723] bg-[#171614] p-5 sm:p-6">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[.15em] text-[#99a57d]">Start with the rough version</p>
-                      <p className="mt-1 text-sm text-[#f5f3ee]/50">A few honest sentences is enough.</p>
+            <div className="relative mx-auto mt-14 max-w-5xl">
+              <div className="absolute -inset-8 rounded-[3rem] bg-[#eb4604]/[0.035] blur-2xl" />
+              <div className="relative rounded-[2rem] border border-[#282723] bg-[#1c1b17] p-2 shadow-2xl shadow-black/40">
+                <div className="rounded-[1.5rem] border border-[#282723] bg-[#100c0b] p-5 sm:p-7">
+                  <div className="flex flex-wrap items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#eb4604] text-xs font-bold text-[#f5f3ee]">P</span>
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[.14em] text-[#99a57d]">Live workspace</p>
+                        <p className="mt-1 text-sm text-[#f5f3ee]/50">Start with the version you actually have.</p>
+                      </div>
                     </div>
-                    <span className="rounded-full bg-[#282723] px-3 py-1.5 font-mono text-[10px] text-[#99a57d]">01</span>
+                    <span className="rounded-full border border-[#282723] px-3 py-1.5 font-mono text-[10px] text-[#99a57d]">01 / IDEA</span>
                   </div>
+
                   <textarea
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     placeholder={EXAMPLE}
-                    rows={8}
+                    rows={7}
                     maxLength={1500}
                     aria-label="Idea to analyse"
-                    className="mt-5 w-full resize-none rounded-2xl border border-[#282723] bg-[#282723]/60 p-5 text-base leading-7 text-[#f5f3ee] placeholder:text-[#f5f3ee]/25 focus:border-[#eb4604] focus:outline-none"
+                    className="mt-6 w-full resize-none rounded-2xl border border-[#282723] bg-[#1c1b17] p-5 text-base leading-7 text-[#f5f3ee] placeholder:text-[#f5f3ee]/25 focus:border-[#eb4604] focus:outline-none sm:p-6 sm:text-lg"
                   />
-                  <div className="mt-3 flex items-center justify-between gap-4">
-                    <button type="button" onClick={() => setText(EXAMPLE)} className="px-1 text-xs font-medium text-[#99a57d] underline decoration-[#282723] underline-offset-4 hover:text-[#f5f3ee]">Use an example</button>
-                    <button type="button" onClick={go} disabled={!text.trim()} className="inline-flex items-center gap-2 rounded-full bg-[#eb4604] px-5 py-3 text-sm font-semibold text-[#f5f3ee] transition-colors hover:bg-[#f77e0d] disabled:opacity-30">
-                      Pull it apart <ArrowRight size={15} />
-                    </button>
+
+                  <div className="mt-4 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+                    <div className="flex items-center gap-2 text-xs text-[#99a57d]">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#99a57d]" />
+                      Nothing leaves this browser in the MVP
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <button type="button" onClick={() => setText(EXAMPLE)} className="text-xs font-medium text-[#99a57d] underline decoration-[#282723] underline-offset-4 hover:text-[#f5f3ee]">Use an example</button>
+                      <button type="button" onClick={go} disabled={!text.trim()} className="inline-flex items-center gap-2 rounded-full bg-[#eb4604] px-5 py-3 text-sm font-semibold text-[#f5f3ee] transition-colors hover:bg-[#f77e0d] disabled:opacity-30">
+                        Analyse idea <ArrowRight size={15} />
+                      </button>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-center justify-between px-3 pb-2 pt-3 text-[11px] text-[#99a57d]">
-                  <span>Runs in your browser</span><span>Nothing to configure</span>
+
+                <div className="hidden items-center justify-center gap-2 px-4 pb-2 pt-3 text-[10px] uppercase tracking-[.12em] text-[#99a57d] sm:flex">
+                  <span className="rounded-full bg-[#282723] px-3 py-1">Idea</span>
+                  <span className="text-[#282723]">→</span>
+                  <span className="rounded-full bg-[#282723] px-3 py-1">Diagnosis</span>
+                  <span className="text-[#282723]">→</span>
+                  <span className="rounded-full bg-[#eb4604]/15 px-3 py-1 text-[#eb4604]">Map</span>
+                  <span className="text-[#282723]">→</span>
+                  <span className="rounded-full bg-[#282723] px-3 py-1">Draft</span>
+                  <span className="text-[#282723]">→</span>
+                  <span className="rounded-full bg-[#282723] px-3 py-1">Challenge</span>
                 </div>
               </div>
             </div>
 
-            <div className="mt-20 grid gap-3 sm:grid-cols-4">
-              {steps.map((step) => (
-                <div key={step.n} className="rounded-2xl border border-[#282723] bg-[#1c1b17] p-5 sm:p-6">
-                  <p className="font-mono text-[10px] font-semibold tracking-[.14em] text-[#eb4604]">{step.n}</p>
-                  <h2 className="mt-6 text-lg font-semibold">{step.title}</h2>
+            <div className="relative mx-auto mt-8 grid max-w-5xl gap-3 sm:grid-cols-4">
+              {steps.map((step, i) => (
+                <div key={step.n} className="group rounded-2xl border border-[#282723] bg-[#1c1b17]/75 p-5 transition-transform hover:-translate-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[10px] font-semibold tracking-[.14em] text-[#eb4604]">{step.n}</span>
+                    {i === 3 && <span className="h-2 w-2 rounded-full bg-[#99a57d]" />}
+                  </div>
+                  <h2 className="mt-7 text-lg font-semibold">{step.title}</h2>
                   <p className="mt-2 text-sm leading-6 text-[#99a57d]">{step.body}</p>
                 </div>
               ))}
@@ -100,66 +126,108 @@ export default function Landing() {
           </div>
         </section>
 
-        <section id="method" className="px-5 py-20 sm:px-8 sm:py-28">
+        <section id="method" className="border-y border-[#282723] bg-[#100c0b] px-5 py-20 sm:px-8 sm:py-28">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-10 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+            <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">The method</p>
-                <h2 className="mt-4 max-w-2xl font-display text-4xl font-bold leading-[.96] tracking-[-.045em] sm:text-6xl">Good arguments have a shape.</h2>
+                <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">Inside Pitch</p>
+                <h2 className="mt-4 max-w-xl font-display text-4xl font-bold leading-[.94] tracking-[-.05em] sm:text-6xl">Your argument, made inspectable.</h2>
+                <p className="mt-6 max-w-lg leading-7 text-[#99a57d]">Pitch is deliberately not a button that turns a sentence into a polished-looking presentation. It exposes the reasoning underneath.</p>
               </div>
-              <p className="max-w-md text-sm leading-6 text-[#f5f3ee]/60">Less interested in making an idea sound impressive. More interested in making its logic inspectable.</p>
-            </div>
-            <div className="grid gap-3 md:grid-cols-2">
-              {[
-                [CircleHelp, 'Read', 'Find the audience, problem, promise, differentiation, proof, outcome, timing and ask hiding in the rough copy.'],
-                [GitBranch, 'Trace', 'Follow the relationships between those pieces. A weak link should interrupt the chain, not disappear inside a card.'],
-                [FileText, 'Draft', 'Turn the material into a structured case. Claims you did not establish stay marked as unfinished.'],
-                [MessageCircleQuestion, 'Push back', 'Surface questions the current argument does not answer cleanly.'],
-              ].map(([Icon, title, body], i) => (
-                <div key={String(title)} className="rounded-2xl border border-[#282723] bg-[#1c1b17] p-6 sm:p-7">
-                  <div className="flex items-center justify-between">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#282723] text-[#f5f3ee]"><Icon size={17} /></div>
-                    <span className="font-mono text-[10px] text-[#eb4604]">0{i + 1}</span>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                {[
+                  [CircleHelp, 'Read', 'Find the audience, problem, promise, differentiation, proof, outcome, timing and ask hiding in the source.'],
+                  [GitBranch, 'Trace', 'See which parts depend on each other and where an unsupported link changes the case.'],
+                  [FileText, 'Draft', 'Build a structured case while keeping unsupported sections visibly unfinished.'],
+                  [MessageCircleQuestion, 'Push back', 'Turn gaps into questions you can answer before the argument meets a real person.'],
+                ].map(([Icon, title, body], i) => (
+                  <div key={String(title)} className="rounded-2xl border border-[#282723] bg-[#1c1b17] p-6">
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#282723] text-[#f5f3ee]"><Icon size={16} /></div>
+                      <span className="font-mono text-[10px] text-[#eb4604]">0{i + 1}</span>
+                    </div>
+                    <h3 className="mt-7 text-xl font-semibold">{String(title)}</h3>
+                    <p className="mt-3 text-sm leading-6 text-[#99a57d]">{String(body)}</p>
                   </div>
-                  <h3 className="mt-8 text-xl font-semibold">{String(title)}</h3>
-                  <p className="mt-3 max-w-lg text-sm leading-6 text-[#99a57d]">{String(body)}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="argument-map" className="px-5 py-20 sm:px-8 sm:py-28">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">Argument map</p>
+                <h2 className="mt-4 max-w-2xl font-display text-4xl font-bold leading-[.94] tracking-[-.05em] sm:text-6xl">See the chain, not a pile of cards.</h2>
+              </div>
+              <p className="max-w-sm text-sm leading-6 text-[#99a57d]">A missing link should be obvious. Pitch does not quietly fill the hole for you.</p>
+            </div>
+            <div className="overflow-hidden rounded-[2rem] border border-[#282723] bg-[#1c1b17] p-2 shadow-2xl shadow-black/20">
+              <MapPreview />
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-[#282723] bg-[#100c0b] px-5 py-20 sm:px-8 sm:py-28">
+          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">A real workflow</p>
+              <h2 className="mt-4 max-w-xl font-display text-4xl font-bold leading-[.94] tracking-[-.05em] sm:text-6xl">Five screens. One argument.</h2>
+              <p className="mt-6 max-w-lg leading-7 text-[#99a57d]">You can move through the whole thing without creating an account, connecting a model, or pretending the rough idea was finished.</p>
+              <button type="button" onClick={() => navigate('/app')} className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#eb4604] px-6 py-3.5 text-sm font-semibold text-[#f5f3ee] hover:bg-[#f77e0d]">
+                Enter the workspace <ArrowRight size={16} />
+              </button>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {[
+                ['01', 'Idea', 'Write the source material.'],
+                ['02', 'Diagnosis', 'See what is actually present.'],
+                ['03', 'Map', 'Inspect the relationships.'],
+                ['04', 'Draft', 'Turn the material into a case.'],
+                ['05', 'Challenge', 'Find the unanswered questions.'],
+              ].map(([n, title, body]) => (
+                <div key={n} className="rounded-2xl border border-[#282723] bg-[#1c1b17] p-5">
+                  <span className="font-mono text-[10px] text-[#eb4604]">{n}</span>
+                  <h3 className="mt-5 font-semibold">{title}</h3>
+                  <p className="mt-1 text-sm leading-6 text-[#99a57d]">{body}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="argument-map" className="bg-[#100c0b] px-5 py-20 sm:px-8 sm:py-28">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-10 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">The useful bit</p>
-                <h2 className="mt-4 max-w-2xl font-display text-4xl font-bold leading-[.96] tracking-[-.045em] sm:text-6xl">See where the argument breaks.</h2>
-              </div>
-              <p className="max-w-sm text-sm leading-6 text-[#99a57d]">Missing pieces stay visible instead of being quietly filled in.</p>
-            </div>
-            <div className="overflow-hidden rounded-[1.5rem] border border-[#282723] bg-[#171614] p-2">
-              <MapPreview />
-            </div>
-          </div>
-        </section>
-
         <section className="px-5 py-20 sm:px-8 sm:py-28">
-          <div className="mx-auto max-w-7xl rounded-[1.5rem] bg-[#1c1b17] p-8 sm:p-12 lg:flex lg:items-center lg:justify-between lg:gap-12">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">Start here</p>
-              <h2 className="mt-4 max-w-2xl font-display text-4xl font-bold leading-[.96] tracking-[-.045em] sm:text-6xl">Bring the messy version.</h2>
-              <p className="mt-5 max-w-xl leading-7 text-[#f5f3ee]/60">You do not need the perfect wording. You need enough of an idea to find out what the argument is missing.</p>
+          <div className="mx-auto max-w-7xl rounded-[2rem] border border-[#282723] bg-[#1c1b17] p-7 sm:p-12">
+            <div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">Built for unfinished thinking</p>
+                <h2 className="mt-4 max-w-xl font-display text-4xl font-bold leading-[.94] tracking-[-.05em] sm:text-6xl">Bring the messy version.</h2>
+                <p className="mt-5 max-w-lg leading-7 text-[#f5f3ee]/60">The useful output is not a prettier sentence. It is knowing which sentence needs evidence, which claim is carrying the case, and what someone is likely to question.</p>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {['Claim', 'Assumption', 'Evidence', 'Question'].map((label, i) => (
+                  <div key={label} className="flex items-center gap-3 rounded-2xl border border-[#282723] bg-[#171614] p-4">
+                    <span className={'flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ' + (i === 1 || i === 3 ? 'bg-[#eb4604]/15 text-[#eb4604]' : 'bg-[#282723] text-[#f5f3ee]')}>
+                      {i === 0 ? 'C' : i === 1 ? 'A' : i === 2 ? 'E' : '?'}
+                    </span>
+                    <span className="text-sm font-medium">{label}</span>
+                    <Check size={14} className="ml-auto text-[#99a57d]" />
+                  </div>
+                ))}
+              </div>
             </div>
-            <button onClick={() => navigate('/app')} className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-[#eb4604] px-6 py-3.5 text-sm font-semibold text-[#f5f3ee] hover:bg-[#f77e0d] lg:mt-0">
-              Start with an idea <ArrowRight size={16} />
-            </button>
           </div>
         </section>
 
-        <section className="px-5 pb-20 sm:px-8 sm:pb-28">
+        <section className="px-5 pb-24 sm:px-8 sm:pb-32">
           <div className="mx-auto max-w-3xl">
-            <div className="mb-8"><p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">Questions</p><h2 className="mt-4 font-display text-4xl font-bold tracking-[-.04em] sm:text-5xl">Before you use it.</h2></div>
+            <div className="mb-8">
+              <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">Questions</p>
+              <h2 className="mt-4 font-display text-4xl font-bold tracking-[-.04em] sm:text-5xl">Before you use it.</h2>
+            </div>
             <div className="rounded-2xl border border-[#282723] bg-[#1c1b17] p-2">
               {faqs.map(([question, answer], i) => (
                 <div key={question} className="border-b border-[#282723] last:border-b-0">
