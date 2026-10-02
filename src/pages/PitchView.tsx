@@ -22,31 +22,31 @@ export default function PitchView() {
 
   return (
     <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-20">
-      <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[.16em] text-coral"><span>Draft</span><span className="h-px w-8 bg-coral" /></div>
+      <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]"><span>Draft</span><span className="h-px w-8 bg-[#eb4604]" /></div>
       <div className="mt-7 grid gap-12 lg:grid-cols-[1fr_300px]">
-        <article className="border-t-2 border-ink">
-          <div className="flex flex-col justify-between gap-5 border-b border-line py-8 sm:flex-row sm:items-start">
+        <article className="border-t-2 border-[#282723]">
+          <div className="flex flex-col justify-between gap-5 border-b border-[#282723] py-8 sm:flex-row sm:items-start">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[.14em] text-muted">Working draft</p>
+              <p className="font-mono text-[10px] uppercase tracking-[.14em] text-[#99a57d]">Working draft</p>
               <h1 className="mt-3 font-display text-5xl font-bold leading-[.94] tracking-[-.055em] sm:text-7xl">{pitch.title}</h1>
-              <p className="mt-5 text-sm text-muted">{grounded} of {pitch.sections.length} sections are grounded in the original idea.</p>
+              <p className="mt-5 text-sm text-[#99a57d]">{grounded} of {pitch.sections.length} sections are grounded in the original idea.</p>
             </div>
-            <button type="button" onClick={() => navigate('/app')} className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-muted hover:text-ink"><Pencil size={14} />Edit source</button>
+            <button type="button" onClick={() => navigate('/app')} className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-[#99a57d] hover:text-[#f5f3ee]"><Pencil size={14} />Edit source</button>
           </div>
 
-          <div className="divide-y divide-line border-b border-line">
+          <div className="divide-y divide-line border-b border-[#282723]">
             {pitch.sections.map((s, i) => (
               <section key={s.heading} className="py-8 sm:py-10">
                 <div className="grid gap-4 sm:grid-cols-[48px_1fr] sm:gap-5">
-                  <span className="font-mono text-[10px] text-coral">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="font-mono text-[10px] text-[#99a57d]">{String(i + 1).padStart(2, '0')}</span>
                   <div>
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <h2 className="text-xl font-semibold">{s.heading}</h2>
-                      <span className={'text-[10px] font-semibold uppercase tracking-[.12em] ' + (s.status === 'grounded' ? 'text-ink' : 'text-coral')}>
+                      <span className={'text-[10px] font-semibold uppercase tracking-[.12em] ' + (s.status === 'grounded' ? 'text-[#f5f3ee]' : 'text-[#99a57d]')}>
                         {s.status === 'grounded' ? 'Established' : 'Needs input'}
                       </span>
                     </div>
-                    <p className="mt-4 max-w-3xl text-base leading-8 text-ink/75">{s.body}</p>
+                    <p className="mt-4 max-w-3xl text-base leading-8 text-[#f5f3ee]/75">{s.body}</p>
                   </div>
                 </div>
               </section>
@@ -54,17 +54,17 @@ export default function PitchView() {
           </div>
         </article>
 
-        <aside className="h-fit border-2 border-ink bg-card lg:sticky lg:top-24">
-          <div className="border-b-2 border-ink p-5">
-            <p className="text-[10px] font-semibold uppercase tracking-[.15em] text-coral">Next move</p>
+        <aside className="h-fit border-2 border-[#282723] bg-[#1c1b17] lg:sticky lg:top-24">
+          <div className="border-b-2 border-[#282723] p-5">
+            <p className="text-[10px] font-semibold uppercase tracking-[.15em] text-[#99a57d]">Next move</p>
             <h2 className="mt-2 text-2xl font-semibold">The draft is not the finish line.</h2>
           </div>
           <div className="space-y-2 p-5">
-            <button type="button" onClick={copy} className="inline-flex w-full items-center justify-center gap-2 bg-ink px-4 py-3 text-sm font-semibold text-card hover:bg-coral">{copied ? <Check size={15} /> : <Copy size={15} />}{copied ? 'Copied' : 'Copy draft'}</button>
-            <button type="button" onClick={download} className="inline-flex w-full items-center justify-center gap-2 border border-line px-4 py-3 text-sm font-medium hover:border-ink"><Download size={15} />Save as Markdown</button>
-            <button type="button" onClick={() => navigate('/app/challenge')} className="inline-flex w-full items-center justify-center gap-2 border border-line px-4 py-3 text-sm font-medium hover:border-ink"><Swords size={15} />Pressure-test it <ArrowRight size={14} /></button>
+            <button type="button" onClick={copy} className="inline-flex w-full items-center justify-center gap-2 bg-[#f5f3ee] px-4 py-3 text-sm font-semibold text-[#171614] hover:bg-[#eb4604]">{copied ? <Check size={15} /> : <Copy size={15} />}{copied ? 'Copied' : 'Copy draft'}</button>
+            <button type="button" onClick={download} className="inline-flex w-full items-center justify-center gap-2 border border-[#282723] px-4 py-3 text-sm font-medium hover:border-[#282723]"><Download size={15} />Save as Markdown</button>
+            <button type="button" onClick={() => navigate('/app/challenge')} className="inline-flex w-full items-center justify-center gap-2 border border-[#282723] px-4 py-3 text-sm font-medium hover:border-[#282723]"><Swords size={15} />Pressure-test it <ArrowRight size={14} /></button>
           </div>
-          <p className="border-t border-line p-5 text-xs leading-5 text-muted">Anything marked “Needs input” is deliberately left open. The tool does not invent proof you did not provide.</p>
+          <p className="border-t border-[#282723] p-5 text-xs leading-5 text-[#99a57d]">Anything marked “Needs input” is deliberately left open. The tool does not invent proof you did not provide.</p>
         </aside>
       </div>
     </div>
