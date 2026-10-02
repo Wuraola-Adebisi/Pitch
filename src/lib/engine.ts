@@ -117,8 +117,8 @@ export function diagnose(raw: string): Diagnosis {
   const problem = firstMatchingSentence(sentences, PROBLEM_MARKERS)
   const promise =
     firstMatchingSentence(sentences, SOLUTION_MARKERS) ??
-    sentences.find((s) => /\b(we|our|my)\b.*\b(build|offer|provide|help)\b/i.test(s)) ??
-    sentences[0] ?? null
+    sentences.find((s) => /\b(we|our|my)\b.*\b(build|offer|provide|help|sell|serve)\b/i.test(s)) ??
+    null
   const differentiation = firstMatchingSentence(sentences, DIFFERENTIATION_MARKERS)
   const proof = firstMatchingSentence(sentences, PROOF_MARKERS)
   const outcome = firstMatchingSentence(sentences, OUTCOME_MARKERS)
@@ -128,6 +128,7 @@ export function diagnose(raw: string): Diagnosis {
   const missing: string[] = []
   if (!audience) missing.push('audience')
   if (!problem) missing.push('problem')
+  if (!promise) missing.push('promise')
   if (!differentiation) missing.push('differentiation')
   if (!proof) missing.push('proof')
   if (!outcome) missing.push('outcome')
@@ -151,6 +152,8 @@ export function diagnose(raw: string): Diagnosis {
 
 export function buildArgumentMap(d: Diagnosis): ArgumentSection[] {
   const strengthOf = (have: string | null): ArgumentSection['strength'] => have ? 'strong' : 'weak'
+  const strengthOfPair = (first: string | null, second: string | null): ArgumentSection['strength'] =>
+    first && second ? 'strong' : first || second ? 'partial' : 'weak'
 
   return [
     {
@@ -164,12 +167,16 @@ export function buildArgumentMap(d: Diagnosis): ArgumentSection[] {
     },
     {
       key: 'whyItMatters',
-      label: 'Why it matters',
-      have: d.audience ? 'The pitch identifies ' + d.audience + ' as the audience.' : '',
-      missing: d.audience ? '' : 'No specific audience detected. A broad category makes the stakes difficult to prove.',
+      label: 'Audience',
+      have: [d.audience ? 'Audience: ' + d.audience + '.' : '', d.outcome ? 'Outcome: ' + d.outcome : ''].filter(Boolean).join(' '),
+      missing: d.audience && d.outcome
+        ? ''
+        : !d.audience
+          ? 'No specific audience detected. A broad category makes the stakes difficult to prove.'
+          : 'The audience is present, but the consequence of solving the problem is not established yet.',
       evidence: 'A cost figure, missed opportunity, or consequence tied directly to the audience.',
       connection: 'Stakes explain why solving the problem is worth prioritising.',
-      strength: strengthOf(d.audience),
+      strength: strengthOfPair(d.audience, d.outcome),
     },
     {
       key: 'insight',
@@ -184,7 +191,7 @@ export function buildArgumentMap(d: Diagnosis): ArgumentSection[] {
       key: 'solution',
       label: 'Solution',
       have: d.promise ?? '',
-      missing: d.promise ? '' : 'No clear solution sentence detected yet.',
+      missing: d.promise ? '' : 'No clear solution sentence detected yet. Describe what the product, service, or approach actually does.',
       evidence: 'One concrete example of the product doing the thing, not a list of features.',
       connection: 'The solution should answer the problem directly.',
       strength: strengthOf(d.promise),
