@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight, RotateCcw } from 'lucide-react'
 import { usePitch } from '../lib/usePitch'
-import { PITCH_EXAMPLES } from '../lib/examples'
 
 const EXAMPLE = "I'm building an app that helps small businesses manage their inventory without spreadsheets."
 
@@ -54,23 +53,6 @@ export default function Input() {
             </div>
           </div>
 
-          <div className="mt-8">
-            <div className="mb-4">
-              <p className="text-xs font-semibold uppercase tracking-[.15em] text-[#99a57d]">Test with an example</p>
-              <p className="mt-1 text-sm text-[#f5f3ee]/45">Try a stronger case, then compare it with one that has obvious gaps.</p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {PITCH_EXAMPLES.map((example) => (
-                <button key={example.title} type="button" onClick={() => setText(example.text)} className="rounded-2xl border border-[#282723] bg-[#1c1b17] p-4 text-left transition-colors hover:border-[#eb4604]">
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-sm font-semibold text-[#f5f3ee]">{example.title}</span>
-                    <span className={`rounded-full px-2 py-1 text-[9px] font-semibold uppercase tracking-[.08em] ${example.quality === 'Stronger case' ? 'bg-[#99a57d]/15 text-[#99a57d]' : 'bg-[#eb4604]/10 text-[#f77e0d]'}`}>{example.quality}</span>
-                  </div>
-                  <p className="mt-3 text-sm leading-6 text-[#f5f3ee]/55">{example.text}</p>
-                </button>
-              ))}
-            </div>
-          </div>
           <p className="mt-7 text-xs text-[#99a57d]">Your idea is analysed and saved locally in this MVP. It is not sent to an AI service.</p>
         </div>
       </div>
