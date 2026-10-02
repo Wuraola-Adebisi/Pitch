@@ -2,10 +2,11 @@
 
 @theme {
   --font-sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
   --font-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
   --color-ink: #f5f3ee;
   --color-paper: #171614;
+  --color-smoky: #100c0b;
   --color-card: #1c1b17;
   --color-white: #f5f3ee;
   --color-muted: #99a57d;
