@@ -5,8 +5,7 @@ import { usePitch } from '../lib/usePitch'
 import LandingNav from '../components/LandingNav'
 import Footer from '../components/Footer'
 import MapPreview from '../components/MapPreview'
-
-const EXAMPLE = "We're building a tool that helps independent retailers predict what stock they'll need before they reorder."
+import { PITCH_EXAMPLES } from '../lib/examples'
 
 const steps = [
   { n: '01', title: 'Start rough', body: 'Put the idea down before you start polishing the pitch.' },
@@ -88,7 +87,6 @@ export default function Landing() {
                       Nothing leaves this browser in the MVP
                     </div>
                     <div className="flex items-center gap-4">
-                      <button type="button" onClick={() => setText(EXAMPLE)} className="text-xs font-medium text-[#99a57d] underline decoration-[#282723] underline-offset-4 hover:text-[#f5f3ee]">Use an example</button>
                       <button type="button" onClick={go} disabled={!text.trim()} className="inline-flex items-center gap-2 rounded-full bg-[#eb4604] px-5 py-3 text-sm font-semibold text-[#f5f3ee] transition-colors hover:bg-[#f77e0d] disabled:opacity-30">
                         Analyse idea <ArrowRight size={15} />
                       </button>
@@ -96,7 +94,28 @@ export default function Landing() {
                   </div>
                 </div>
 
-                <div className="hidden items-center justify-center gap-2 px-4 pb-2 pt-3 text-[10px] uppercase tracking-[.12em] text-[#99a57d] sm:flex">
+                <div className="border-t border-[#282723] px-5 py-5 sm:px-7">
+                <div className="mb-3 flex items-end justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[.14em] text-[#99a57d]">Test cases</p>
+                    <p className="mt-1 text-xs text-[#f5f3ee]/40">Compare a stronger argument with one that still needs work.</p>
+                  </div>
+                  <span className="hidden text-[10px] uppercase tracking-[.1em] text-[#99a57d]/50 sm:inline">6 examples</span>
+                </div>
+                <div className="grid gap-2 sm:grid-cols-2">
+                  {PITCH_EXAMPLES.map((example) => (
+                    <button key={example.title} type="button" onClick={() => setText(example.text)} className="rounded-xl border border-[#282723] bg-[#1c1b17] p-3 text-left transition-colors hover:border-[#eb4604]">
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="text-xs font-semibold text-[#f5f3ee]">{example.title}</span>
+                        <span className="text-[9px] font-semibold uppercase tracking-[.07em] text-[#99a57d]">{example.quality}</span>
+                      </div>
+                      <p className="mt-1.5 line-clamp-2 text-xs leading-5 text-[#f5f3ee]/45">{example.text}</p>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="hidden items-center justify-center gap-2 px-4 pb-2 pt-3 text-[10px] uppercase tracking-[.12em] text-[#99a57d] sm:flex">
                   <span className="rounded-full bg-[#282723] px-3 py-1">Idea</span>
                   <span className="text-[#282723]">→</span>
                   <span className="rounded-full bg-[#282723] px-3 py-1">Diagnosis</span>
