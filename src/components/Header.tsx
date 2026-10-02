@@ -12,7 +12,7 @@ const steps = [
 
 export default function Header() {
   const { pathname } = useLocation()
-  const { reset } = usePitch()
+  const { reset, raw, diagnosis } = usePitch()
   const activeIndex = Math.max(0, steps.findIndex((s) => s.path === pathname))
 
   return (
@@ -27,13 +27,16 @@ export default function Header() {
             {steps.map((s, i) => {
               const active = pathname === s.path
               const completed = i < activeIndex
+              const available = i === 0 || Boolean(raw && diagnosis)
               return (
                 <Link
                   key={s.path}
-                  to={s.path}
+                  to={available ? s.path : '/app'}
                   aria-current={active ? 'step' : undefined}
+                  aria-disabled={!available}
+                  tabIndex={available ? undefined : -1}
                   className={'rounded-full px-3.5 py-2 text-xs font-medium transition-colors sm:px-4 sm:text-[13px] ' + (
-                    active ? 'bg-[#eb4604] text-[#f5f3ee]' : completed ? 'text-[#f5f3ee]/70 hover:text-[#f5f3ee]' : 'text-[#99a57d] hover:text-[#f5f3ee]'
+                    active ? 'bg-[#eb4604] text-[#f5f3ee]' : completed ? 'text-[#f5f3ee]/70 hover:text-[#f5f3ee]' : available ? 'text-[#99a57d] hover:text-[#f5f3ee]' : 'text-[#99a57d]/40'
                   )}
                 >
                   {s.label}
