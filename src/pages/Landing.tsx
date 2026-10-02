@@ -74,16 +74,16 @@ export default function Landing() {
                     rows={7}
                     maxLength={1500}
                     aria-label="Idea to analyse"
-                    className="mt-6 w-full resize-none rounded-2xl border border-line bg-card p-5 text-base leading-7 text-ink placeholder:text-ink/25 focus:border-[#eb4604] focus:outline-none sm:p-6 sm:text-lg"
+                    className="mt-6 w-full resize-none rounded-2xl border border-line bg-card p-5 text-base leading-7 text-ink placeholder:text-ink/25 focus:border-coral focus:outline-none sm:p-6 sm:text-lg"
                   />
 
                   <div className="mt-4 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
                     <div className="flex items-center gap-2 text-xs text-muted">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#99a57d]" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-muted" />
                       Nothing leaves this browser in the MVP
                     </div>
                     <div className="flex items-center gap-4">
-                      <button type="button" onClick={() => setText(EXAMPLE)} className="text-xs font-medium text-muted underline decoration-[#282723] underline-offset-4 hover:text-ink">Use an example</button>
+                      <button type="button" onClick={() => setText(EXAMPLE)} className="text-xs font-medium text-muted underline decoration-line underline-offset-4 hover:text-ink">Use an example</button>
                       <button type="button" onClick={go} disabled={!text.trim()} className="inline-flex items-center gap-2 rounded-full bg-coral px-5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-coral-dark disabled:opacity-30">
                         Analyse idea <ArrowRight size={15} />
                       </button>
@@ -92,15 +92,15 @@ export default function Landing() {
                 </div>
 
                 <div className="hidden items-center justify-center gap-2 px-4 pb-2 pt-3 text-[11px] uppercase tracking-[.12em] text-muted sm:flex">
-                  <span className="rounded-full bg-[#282723] px-3 py-1">Idea</span>
-                  <span className="text-[#282723]">→</span>
-                  <span className="rounded-full bg-[#282723] px-3 py-1">Diagnosis</span>
-                  <span className="text-[#282723]">→</span>
+                  <span className="rounded-full bg-line px-3 py-1">Idea</span>
+                  <span className="text-line">→</span>
+                  <span className="rounded-full bg-line px-3 py-1">Diagnosis</span>
+                  <span className="text-line">→</span>
                   <span className="rounded-full bg-coral/15 px-3 py-1 text-coral">Map</span>
-                  <span className="text-[#282723]">→</span>
-                  <span className="rounded-full bg-[#282723] px-3 py-1">Draft</span>
-                  <span className="text-[#282723]">→</span>
-                  <span className="rounded-full bg-[#282723] px-3 py-1">Challenge</span>
+                  <span className="text-line">→</span>
+                  <span className="rounded-full bg-line px-3 py-1">Draft</span>
+                  <span className="text-line">→</span>
+                  <span className="rounded-full bg-line px-3 py-1">Challenge</span>
                 </div>
               </div>
             </div>
@@ -110,7 +110,7 @@ export default function Landing() {
                 <div key={step.n} className="group rounded-2xl border border-line bg-card/75 p-5 transition-transform hover:-translate-y-1">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-[11px] font-semibold tracking-[.14em] text-coral">{step.n}</span>
-                    {i === 3 && <span className="h-2 w-2 rounded-full bg-[#99a57d]" />}
+                    {i === 3 && <span className="h-2 w-2 rounded-full bg-muted" />}
                   </div>
                   <h2 className="mt-7 text-lg font-semibold">{step.title}</h2>
                   <p className="mt-2 text-sm leading-6 text-muted">{step.body}</p>
@@ -138,7 +138,7 @@ export default function Landing() {
                 ].map(([Icon, title, body], i) => (
                   <div key={String(title)} className="rounded-2xl border border-line bg-card p-6">
                     <div className="flex items-center justify-between">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#282723] text-ink"><Icon size={16} /></div>
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-line text-ink"><Icon size={16} /></div>
                       <span className="font-mono text-[11px] text-coral">0{i + 1}</span>
                     </div>
                     <h3 className="mt-7 text-xl font-semibold">{String(title)}</h3>
@@ -204,7 +204,7 @@ export default function Landing() {
               <div className="grid gap-3 sm:grid-cols-2">
                 {['Claim', 'Assumption', 'Evidence', 'Question'].map((label, i) => (
                   <div key={label} className="flex items-center gap-3 rounded-2xl border border-line bg-paper p-4">
-                    <span className={'flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ' + (i === 1 || i === 3 ? 'bg-coral/15 text-coral' : 'bg-[#282723] text-ink')}>
+                    <span className={'flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ' + (i === 1 || i === 3 ? 'bg-coral/15 text-coral' : 'bg-line text-ink')}>
                       {i === 0 ? 'C' : i === 1 ? 'A' : i === 2 ? 'E' : '?'}
                     </span>
                     <span className="text-sm font-medium">{label}</span>
