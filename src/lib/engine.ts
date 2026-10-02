@@ -37,6 +37,7 @@ export interface ChallengeQuestion {
   question: string
   targets: SectionKey
   severity: 'critical' | 'moderate'
+  strengthen: string
 }
 
 const AUDIENCE_PATTERNS = [
@@ -225,42 +226,49 @@ export function generateChallenges(d: Diagnosis, _map: ArgumentSection[]): Chall
     question: 'Who exactly is this for, and what makes this group the first group to care?',
     targets: 'whyItMatters',
     severity: 'critical',
+    strengthen: 'Name the first specific audience, then connect the problem to a concrete cost, consequence, or unmet need for that group.',
   })
 
   if (!d.problem) qs.push({
     question: 'What painful, recurring problem exists before your product does?',
     targets: 'problem',
     severity: 'critical',
+    strengthen: 'Describe the recurring situation, who experiences it, and what it costs them when it is left unresolved.',
   })
 
   if (!d.differentiation) qs.push({
     question: 'Why this instead of doing nothing or using the alternatives people already have?',
     targets: 'insight',
     severity: 'critical',
+    strengthen: 'Give the strongest alternative and one reason this approach changes the outcome rather than simply adding another feature.',
   })
 
   if (!d.proof) qs.push({
     question: 'What evidence supports the biggest claim in this pitch?',
     targets: 'proof',
     severity: 'critical',
+    strengthen: 'Add one observable signal: users, revenue, pilots, interviews, retention, conversion, or another concrete result.',
   })
 
   if (!d.outcome) qs.push({
     question: 'What changes for the customer after they use this? Give the outcome, not another feature.',
     targets: 'whyItMatters',
     severity: 'moderate',
+    strengthen: 'State the measurable or observable change the audience gets after the solution works.',
   })
 
   if (!d.whyNow) qs.push({
     question: 'Why does this need to exist now? What changed that makes the timing matter?',
     targets: 'whyNow',
     severity: 'moderate',
+    strengthen: 'Point to a dated market, technology, behaviour, cost, or regulatory change that makes the timing meaningful.',
   })
 
   if (!d.cta) qs.push({
     question: 'What do you want the listener to do next, specifically?',
     targets: 'ask',
     severity: 'moderate',
+    strengthen: 'Choose one concrete next action and make it proportional to what you are asking the audience to commit.',
   })
 
   return qs
