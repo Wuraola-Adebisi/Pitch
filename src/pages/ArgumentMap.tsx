@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { ArrowDown, ArrowRight, CheckCircle2 } from 'lucide-react'
+import { ArrowDown, ArrowRight } from 'lucide-react'
 import { usePitch } from '../lib/usePitch'
 import type { SectionKey } from '../lib/engine'
 
 const strengthStyle: Record<string, string> = {
   strong: 'border-ink bg-card',
-  partial: 'border-coral bg-card',
+  partial: 'border-coral bg-[#fff4ef]',
   weak: 'border-dashed border-ink/30 bg-paper',
 }
-const strengthDot: Record<string, string> = { strong: 'bg-ink', partial: 'bg-coral', weak: 'bg-ink/20' }
+const strengthDot: Record<string, string> = { strong: 'bg-ink', partial: 'bg-coral', weak: 'bg-coral/35' }
 
 export default function ArgumentMap() {
   const { map, diagnosis } = usePitch()
@@ -18,60 +18,66 @@ export default function ArgumentMap() {
   if (map.length === 0 || !diagnosis) return <Navigate to="/app" replace />
 
   const open = map.find((s) => s.key === openKey) ?? map[0]
-  const signalCount = map.filter((s) => s.strength === 'strong').length
+  const strong = map.filter((s) => s.strength === 'strong').length
+  const partial = map.filter((s) => s.strength === 'partial').length
+  const weak = map.filter((s) => s.strength === 'weak').length
 
   return (
     <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-20">
-      <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+      <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
         <div>
-          <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[.18em] text-coral"><span>03</span><span className="h-px w-8 bg-coral" />Argument map</div>
-          <h1 className="mt-7 font-display text-5xl font-bold leading-[.95] tracking-[-.055em] sm:text-7xl">Does the case hold together?</h1>
-          <p className="mt-6 max-w-2xl leading-7 text-muted">A pitch is not seven independent claims. Each stage has to earn the next one. Click through the chain and find the weak links.</p>
+          <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[.16em] text-coral"><span>Argument map</span><span className="h-px w-8 bg-coral" /></div>
+          <h1 className="mt-7 max-w-4xl font-display text-5xl font-bold leading-[.94] tracking-[-.055em] sm:text-7xl">Follow the logic.</h1>
+          <p className="mt-6 max-w-2xl leading-7 text-muted">The argument moves from problem to ask. A weak link matters because it affects what comes after it.</p>
         </div>
-        <div className="flex items-center gap-2 text-sm text-muted"><CheckCircle2 size={16} className="text-coral" />{signalCount} of {map.length} stages have a signal</div>
+        <div className="flex gap-2 text-xs font-medium">
+          <span className="border border-ink bg-card px-3 py-2">{strong} established</span>
+          <span className="border border-coral bg-[#fff4ef] px-3 py-2">{partial} partial</span>
+          <span className="border border-dashed border-ink/30 px-3 py-2">{weak} missing</span>
+        </div>
       </div>
 
-      <div className="mt-12 grid gap-10 lg:grid-cols-[280px_1fr] lg:gap-16">
-        <div>
-          <div className="flex gap-2 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible lg:pb-0">
+      <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_360px] lg:items-start lg:gap-12">
+        <div className="relative">
+          <div className="absolute bottom-8 left-5 top-8 hidden w-px bg-line sm:block" />
+          <div className="space-y-3">
             {map.map((s, i) => (
-              <div key={s.key}>
+              <div key={s.key} className="relative sm:pl-12">
+                <span className={'absolute left-[17px] top-6 z-10 hidden h-2.5 w-2.5 rounded-full border-2 border-paper sm:block ' + strengthDot[s.strength]} />
                 <button
                   type="button"
                   onClick={() => setOpenKey(s.key)}
-                  className={'w-full border p-4 text-left transition-colors ' + strengthStyle[s.strength] + (open.key === s.key ? ' ring-1 ring-ink' : ' hover:bg-card')}
+                  className={'w-full border-2 p-5 text-left transition-transform hover:-translate-y-0.5 ' + strengthStyle[s.strength] + (open.key === s.key ? ' ring-2 ring-coral ring-offset-2 ring-offset-paper' : '')}
                 >
-                  <div className="flex items-center gap-2">
-                    <span className={'h-2 w-2 ' + strengthDot[s.strength]} />
-                    <span className="font-semibold">{s.label}</span>
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <span className="font-mono text-[10px] text-muted">0{i + 1}</span>
+                      <p className="mt-1 text-lg font-semibold">{s.label}</p>
+                    </div>
+                    <ArrowRight size={16} className="text-muted" />
                   </div>
                 </button>
-                {i < map.length - 1 && <div className="hidden justify-center py-1 text-ink/20 lg:flex"><ArrowDown size={14} /></div>}
+                {i < map.length - 1 && <div className="py-1 text-center text-[10px] uppercase tracking-[.14em] text-muted sm:text-left sm:pl-2">depends on the link above</div>}
               </div>
             ))}
           </div>
-          <div className="mt-5 border-l-2 border-coral pl-4 text-xs leading-6 text-muted">
-            <span className="font-semibold text-ink">Solid</span> = detected signal · <span className="font-semibold text-coral">dashed</span> = gap to investigate
-          </div>
         </div>
 
-        <div>
-          <div className="border-t-2 border-ink bg-card">
-            <div className="flex items-start justify-between gap-4 border-b border-line px-6 py-5 sm:px-8">
-              <div><p className="mb-2 text-xs uppercase tracking-[.15em] text-muted">{open.label}</p><h2 className="text-2xl font-semibold">{open.strength === 'strong' ? 'Signal found' : 'This needs work'}</h2></div>
-              <span className="text-xs font-semibold uppercase tracking-[.12em] text-coral">{open.strength === 'strong' ? 'Found' : 'Gap'}</span>
-            </div>
-            <div className="divide-y divide-line">
-              <section className="px-6 py-6 sm:px-8"><p className="mb-2 text-xs uppercase tracking-[.15em] text-muted">What we found</p><p className="leading-7 text-ink/75">{open.have || 'Nothing established here yet.'}</p></section>
-              <section className="px-6 py-6 sm:px-8"><p className="mb-2 text-xs uppercase tracking-[.15em] text-coral">What is missing</p><p className="leading-7 text-ink/70">{open.missing || 'The detected signal is present. Strengthen it with evidence.'}</p></section>
-              <section className="px-6 py-6 sm:px-8"><p className="mb-2 text-xs uppercase tracking-[.15em] text-muted">Useful evidence</p><p className="leading-7 text-ink/70">{open.evidence}</p></section>
-              <section className="px-6 py-6 sm:px-8"><p className="mb-2 text-xs uppercase tracking-[.15em] text-muted">Why it connects</p><p className="leading-7 text-ink/70">{open.connection}</p></section>
-            </div>
+        <aside className="border-2 border-ink bg-card lg:sticky lg:top-24">
+          <div className="border-b-2 border-ink px-5 py-4">
+            <p className="text-[10px] font-semibold uppercase tracking-[.16em] text-coral">Inspecting</p>
+            <h2 className="mt-2 text-xl font-semibold">{open.label}</h2>
           </div>
-          <div className="mt-6 flex justify-end">
-            <button type="button" onClick={() => navigate('/app/pitch')} className="inline-flex items-center gap-2 border border-ink bg-ink px-5 py-3 text-sm font-semibold text-white hover:border-coral hover:bg-coral">Turn it into a draft <ArrowRight size={16} /></button>
+          <div className="divide-y divide-line">
+            <section className="p-5"><p className="mb-2 text-[10px] font-semibold uppercase tracking-[.14em] text-muted">Established</p><p className="text-sm leading-6 text-ink/75">{open.have || 'Nothing established here yet.'}</p></section>
+            <section className="bg-[#fff4ef] p-5"><p className="mb-2 text-[10px] font-semibold uppercase tracking-[.14em] text-coral">Gap</p><p className="text-sm leading-6 text-ink/75">{open.missing || 'The signal is present. Strengthen it with evidence.'}</p></section>
+            <section className="p-5"><p className="mb-2 text-[10px] font-semibold uppercase tracking-[.14em] text-muted">Evidence to look for</p><p className="text-sm leading-6 text-ink/75">{open.evidence}</p></section>
+            <section className="p-5"><p className="mb-2 text-[10px] font-semibold uppercase tracking-[.14em] text-muted">Why it connects</p><p className="text-sm leading-6 text-ink/75">{open.connection}</p></section>
           </div>
-        </div>
+          <div className="border-t-2 border-ink p-5">
+            <button type="button" onClick={() => navigate('/app/pitch')} className="inline-flex w-full items-center justify-center gap-2 bg-coral px-4 py-3 text-sm font-semibold text-card hover:bg-coral-dark">Build the draft <ArrowRight size={15} /></button>
+          </div>
+        </aside>
       </div>
     </div>
   )
