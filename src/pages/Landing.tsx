@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ArrowRight, Check, ChevronDown, CircleHelp, FileText, GitBranch, MessageCircleQuestion, Sparkles } from 'lucide-react'
+import { ArrowRight, Check, ChevronDown, CircleHelp, FileText, GitBranch, MessageCircleQuestion } from 'lucide-react'
 import { usePitch } from '../lib/usePitch'
 import LandingNav from '../components/LandingNav'
 import Footer from '../components/Footer'
@@ -43,7 +43,7 @@ export default function Landing() {
           <div className="mx-auto max-w-7xl">
             <div className="relative mx-auto max-w-5xl text-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-[#282723] bg-[#1c1b17] px-4 py-2 text-[11px] font-semibold uppercase tracking-[.16em] text-[#99a57d]">
-                <Sparkles size={13} className="text-[#eb4604]" /> A workspace for better arguments
+                A workspace for better arguments
               </div>
               <h1 className="mx-auto mt-8 max-w-5xl font-display text-5xl font-bold leading-[.88] tracking-[-.065em] sm:text-7xl lg:text-[7rem]">
                 Turn the messy idea into a <span className="text-[#eb4604]">case.</span>
