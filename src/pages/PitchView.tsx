@@ -51,7 +51,7 @@ export default function PitchView() {
                     <span className="font-mono text-[11px] text-coral">{String(i + 1).padStart(2, '0')}</span>
                     <h2 className="text-xl font-semibold">{s.heading}</h2>
                   </div>
-                  <span className={'rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[.11em] ' + (s.status === 'grounded' ? 'bg-[#282723] text-muted' : 'bg-coral/10 text-coral')}>
+                  <span className={'rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[.11em] ' + (s.status === 'grounded' ? 'bg-line text-muted' : 'bg-coral/10 text-coral')}>
                     {s.status === 'grounded' ? 'Grounded' : 'Needs input'}
                   </span>
                 </div>
@@ -69,8 +69,8 @@ export default function PitchView() {
           </div>
           <div className="space-y-2 p-5">
             <button type="button" onClick={copy} className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-coral px-4 py-3 text-sm font-semibold text-ink hover:bg-coral-dark">{copied ? <Check size={15} /> : <Copy size={15} />}{copied ? 'Copied to clipboard' : 'Copy draft'}</button>
-            <button type="button" onClick={download} className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-line px-4 py-3 text-sm font-medium hover:border-[#99a57d]"><Download size={15} />Save as Markdown</button>
-            <button type="button" onClick={() => navigate('/app/challenge')} className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-line px-4 py-3 text-sm font-medium hover:border-[#eb4604]"><Swords size={15} />Pressure-test it <ArrowRight size={14} /></button>
+            <button type="button" onClick={download} className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-line px-4 py-3 text-sm font-medium hover:border-muted"><Download size={15} />Save as Markdown</button>
+            <button type="button" onClick={() => navigate('/app/challenge')} className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-line px-4 py-3 text-sm font-medium hover:border-coral"><Swords size={15} />Pressure-test it <ArrowRight size={14} /></button>
           </div>
           <div className="border-t border-line p-5">
             <p className="text-xs leading-5 text-muted">The draft preserves what the source established. Open sections tell you what still needs your input.</p>
