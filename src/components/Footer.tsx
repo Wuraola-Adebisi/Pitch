@@ -43,7 +43,7 @@ export default function Footer() {
             <ul className="mt-5 space-y-3 text-sm text-[#99a57d]">
               <li><Link to="/privacy" className="hover:text-[#f5f3ee]">Privacy</Link></li>
               <li><Link to="/terms" className="hover:text-[#f5f3ee]">Terms</Link></li>
-              <li><a href="mailto:hello@pitch.local" className="inline-flex items-center gap-1 hover:text-[#f5f3ee]">Feedback <ArrowUpRight size={13} /></a></li>
+              <li><span className="text-[#99a57d]/60">More product notes coming later</span></li>
             </ul>
           </div>
         </div>
