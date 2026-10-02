@@ -25,58 +25,41 @@ export default function Input() {
 
   return (
     <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-20">
-      <div className="grid gap-12 lg:grid-cols-[.7fr_1.3fr] lg:gap-20">
+      <div className="mb-10 flex items-center gap-3 text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">
+        <span className="rounded-full bg-[#eb4604] px-2.5 py-1 text-[#f5f3ee]">01</span> Idea
+      </div>
+      <div className="grid gap-12 lg:grid-cols-[.75fr_1.25fr] lg:gap-20">
         <div>
-          <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[.18em] text-coral">
-            <span>01</span><span className="h-px w-8 bg-coral" />Idea
-          </div>
-          <h1 className="mt-7 max-w-xl font-display text-5xl font-bold leading-[.96] tracking-[-.055em] sm:text-7xl">
-            Start with the thing you actually have.
-          </h1>
-          <p className="mt-6 max-w-md text-base leading-7 text-muted sm:text-lg">
-            Put the rough idea here. It does not need to sound convincing yet. Pitch will show you what is there, what is missing, and where the argument needs work.
-          </p>
-          <div className="mt-8 border-l-2 border-coral pl-4 text-sm leading-6 text-muted">
-            A few sentences is enough. Do not write the polished version.
-          </div>
+          <h1 className="max-w-xl font-display text-5xl font-bold leading-[.96] tracking-[-.055em] sm:text-7xl">Start with the thing you actually have.</h1>
+          <p className="mt-6 max-w-md text-base leading-7 text-[#f5f3ee]/65 sm:text-lg">Put the rough idea here. It does not need to sound convincing yet. Pitch will show you what is there, what is missing, and where the argument needs work.</p>
+          <div className="mt-8 rounded-2xl bg-[#1c1b17] p-5 text-sm leading-6 text-[#99a57d]">A few sentences is enough. Do not write the polished version.</div>
         </div>
 
         <div>
-          <div className="border border-ink bg-card">
-            <div className="border-b border-line px-5 py-3.5 text-xs font-semibold uppercase tracking-[.15em] text-muted">Your idea</div>
-            <textarea
-              autoFocus
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') go() }}
-              placeholder={EXAMPLE}
-              rows={11}
-              maxLength={1500}
-              aria-label="Your idea"
-              className="w-full resize-none bg-card p-5 text-lg leading-7 placeholder:text-ink/25 focus:outline-none sm:p-7 sm:text-xl"
-            />
-            <div className="flex flex-col justify-between gap-4 border-t border-line px-5 py-4 sm:flex-row sm:items-center">
-              <div className="flex flex-wrap items-center gap-3 text-xs text-muted">
-                <button type="button" onClick={() => setText(EXAMPLE)} className="font-medium text-ink underline decoration-line underline-offset-4 hover:decoration-ink">Use an example</button>
-                <span>{text.length}/1500</span><span>Ctrl/⌘ + Enter</span>
+          <div className="rounded-[1.5rem] bg-[#1c1b17] p-2">
+            <div className="rounded-[1.25rem] border border-[#282723] bg-[#171614] p-5 sm:p-7">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[.15em] text-[#99a57d]">Your idea</p>
+                  <p className="mt-1 text-sm text-[#f5f3ee]/45">Write it as you would explain it to someone.</p>
+                </div>
+                <span className="font-mono text-[10px] text-[#99a57d]">{text.length}/1500</span>
               </div>
-              <button type="button" onClick={go} disabled={!text.trim()} className="inline-flex items-center justify-center gap-2 border border-ink bg-ink px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-coral hover:bg-coral disabled:opacity-30">
-                Analyse idea <ArrowRight size={16} />
-              </button>
+              <textarea autoFocus value={text} onChange={(e) => setText(e.target.value)} onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') go() }} placeholder={EXAMPLE} rows={11} maxLength={1500} aria-label="Your idea" className="mt-5 w-full resize-none rounded-2xl border border-[#282723] bg-[#282723] p-5 text-lg leading-7 text-[#f5f3ee] placeholder:text-[#f5f3ee]/25 focus:border-[#eb4604] focus:outline-none sm:p-7 sm:text-xl" />
+              <div className="mt-4 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+                <button type="button" onClick={() => setText(EXAMPLE)} className="px-1 text-xs font-medium text-[#99a57d] underline decoration-[#282723] underline-offset-4 hover:text-[#f5f3ee]">Use an example</button>
+                <button type="button" onClick={go} disabled={!text.trim()} className="inline-flex items-center justify-center gap-2 rounded-full bg-[#eb4604] px-5 py-3 text-sm font-semibold text-[#f5f3ee] transition-colors hover:bg-[#f77e0d] disabled:opacity-30">Analyse idea <ArrowRight size={16} /></button>
+              </div>
             </div>
           </div>
 
           <div className="mt-8">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[.15em] text-muted">Or start here</p>
-            <div className="grid gap-px border border-line bg-line sm:grid-cols-3">
-              {STARTERS.map((starter) => (
-                <button key={starter} type="button" onClick={() => setText(starter)} className="bg-paper p-4 text-left text-sm leading-6 text-ink/70 transition-colors hover:bg-card hover:text-ink">
-                  {starter}
-                </button>
-              ))}
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[.15em] text-[#99a57d]">Or start here</p>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {STARTERS.map((starter) => <button key={starter} type="button" onClick={() => setText(starter)} className="rounded-2xl border border-[#282723] bg-[#1c1b17] p-4 text-left text-sm leading-6 text-[#f5f3ee]/70 transition-colors hover:border-[#eb4604] hover:text-[#f5f3ee]">{starter}</button>)}
             </div>
           </div>
-          <p className="mt-7 text-xs text-muted">Your idea is analysed and saved locally in this MVP. It is not sent to an AI service.</p>
+          <p className="mt-7 text-xs text-[#99a57d]">Your idea is analysed and saved locally in this MVP. It is not sent to an AI service.</p>
         </div>
       </div>
     </div>
