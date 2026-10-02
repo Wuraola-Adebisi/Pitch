@@ -23,7 +23,7 @@ export default function Method() {
             <article key={String(number)} className="rounded-2xl border border-line bg-card p-7">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-[11px] text-coral">{String(number)}</span>
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#282723]"><Icon size={16} /></div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-line"><Icon size={16} /></div>
               </div>
               <h2 className="mt-8 text-2xl font-semibold">{String(title)}</h2>
               <p className="mt-3 leading-7 text-muted">{String(body)}</p>
