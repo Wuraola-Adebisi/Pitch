@@ -9,7 +9,7 @@ export default function LandingNav() {
           Pitch
         </Link>
         <nav className="hidden items-center gap-8 text-[13px] font-medium text-[#99a57d] sm:flex">
-          <a href="#method" className="transition-colors hover:text-[#f5f3ee]">Inside Pitch Arena Arena</a>
+          <a href="#method" className="transition-colors hover:text-[#f5f3ee]">Inside Pitch Arena</a>
           <a href="#argument-map" className="transition-colors hover:text-[#f5f3ee]">Argument map</a>
           <Link to="/method" className="transition-colors hover:text-[#f5f3ee]">The method</Link>
         </nav>
