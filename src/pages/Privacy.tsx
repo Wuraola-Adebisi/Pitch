@@ -15,7 +15,7 @@ export default function Privacy() {
             <section>
               <h2 className="font-display text-xl text-ink mb-2">1. Scope</h2>
               <p>
-                This policy describes how the current Pitch MVP handles information when you use
+                This policy describes how the current Pitch Arena product handles information when you use
                 the website and its browser-based workspace. It reflects the product as it exists
                 today and will be updated if the way information is handled changes.
               </p>
@@ -31,7 +31,7 @@ export default function Privacy() {
                 or your browser settings.
               </p>
               <p className="mt-3">
-                Pitch does not use your submitted idea to train an AI model in this MVP, because no
+                Pitch Arena does not use your submitted idea to train an AI model in this MVP, because no
                 remote AI model receives the idea.
               </p>
             </section>
@@ -52,7 +52,7 @@ export default function Privacy() {
                 Like most websites, the hosting and delivery infrastructure may process limited
                 technical information needed to deliver the site, such as an IP address, request
                 information, browser or device information, and security or performance logs.
-                Pitch does not currently use this information to identify you through an account
+                Pitch Arena does not currently use this information to identify you through an account
                 or build an advertising profile. The exact technical data retained by the hosting
                 provider is governed by that provider’s own policies.
               </p>
@@ -71,7 +71,7 @@ export default function Privacy() {
               <h2 className="font-display text-xl text-ink mb-2">6. Your choices</h2>
               <p>
                 You can clear the idea stored by the app using its available reset or clear
-                controls. You can also clear Pitch’s local storage through your browser settings.
+                controls. You can also clear Pitch Arena’s local storage through your browser settings.
                 You may stop using the service at any time.
               </p>
             </section>
