@@ -30,8 +30,8 @@ export default function Header() {
     <>
       <header className="sticky top-0 z-40 border-b border-line bg-smoky/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3.5 sm:gap-5 sm:px-8">
-          <Link to="/" className="flex shrink-0 items-center gap-3 font-display text-lg font-bold tracking-[-0.04em]"><span className="flex h-8 w-8 items-center justify-center rounded-full bg-coral text-[11px] font-bold text-ink">P</span><span className="hidden sm:inline">Pitch</span></Link>
-          <nav className="flex min-w-0 flex-1 justify-start overflow-x-auto" aria-label="Pitch workflow">
+          <Link to="/" className="flex shrink-0 items-center gap-3 font-display text-lg font-bold tracking-[-0.04em]"><span className="flex h-8 w-8 items-center justify-center rounded-full bg-coral text-[11px] font-bold text-ink">P</span><span className="hidden sm:inline">Pitch Arena</span></Link>
+          <nav className="flex min-w-0 flex-1 justify-start overflow-x-auto" aria-label="Pitch Arena workflow">
             <div className="mx-auto flex min-w-max items-center gap-1 rounded-full border border-line bg-card p-1">
               {steps.map((s, i) => {
                 const active = pathname === s.path
