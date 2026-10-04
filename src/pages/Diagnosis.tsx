@@ -31,7 +31,6 @@ export default function Diagnosis() {
   if (!diagnosis) return <Navigate to="/app" replace />
 
   const foundCount = FIELDS.filter((f) => diagnosis[f.key]).length
-  const missingCount = FIELDS.length - foundCount
   const openCount = FIELDS.filter((f) => !diagnosis[f.key] || diagnosis.weak.includes(f.key)).length
 
   return (
