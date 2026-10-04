@@ -13,7 +13,7 @@ export default function Terms() {
 
           <div className="space-y-8 text-ink/70 leading-relaxed">
             <section>
-              <h2 className="font-display text-xl text-ink mb-2">1. What Pitch is</h2>
+              <h2 className="font-display text-xl text-ink mb-2">1. What Pitch Arena is</h2>
               <p>
                 Pitch is a browser-based MVP for inspecting and strengthening arguments. It is
                 provided on an experimental basis and may contain errors, omissions, or features
@@ -30,7 +30,7 @@ export default function Terms() {
                 any material you submit.
               </p>
               <p className="mt-3">
-                Pitch is not a confidentiality service and your submission should not be treated
+                Pitch Arena is not a confidentiality service and your submission should not be treated
                 as being under an NDA. The current MVP processes idea text in your browser and
                 does not upload it to a remote database or AI provider, but browser-local storage
                 is not a substitute for a contractual confidentiality arrangement.
@@ -50,7 +50,7 @@ export default function Terms() {
             <section>
               <h2 className="font-display text-xl text-ink mb-2">4. No professional advice</h2>
               <p>
-                Pitch does not provide legal, financial, investment, medical, accounting,
+                Pitch Arena does not provide legal, financial, investment, medical, accounting,
                 regulatory, or other professional advice. Nothing produced by the product should
                 be treated as a substitute for qualified professional advice or independent
                 verification.
@@ -70,7 +70,7 @@ export default function Terms() {
             <section>
               <h2 className="font-display text-xl text-ink mb-2">6. Availability and disclaimers</h2>
               <p>
-                Pitch is provided on an “as is” and “as available” basis to the extent permitted
+                Pitch Arena is provided on an “as is” and “as available” basis to the extent permitted
                 by applicable law. No representation is made that the service will be uninterrupted,
                 error-free, secure, or suitable for every purpose. You remain responsible for
                 decisions made using the product or its outputs.
