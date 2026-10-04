@@ -1,6 +1,6 @@
-# Pitch
+# Pitch Arena
 
-Pitch turns a rough idea into a clearer argument.
+Pitch Arena helps turn a rough idea into a clearer, more defensible argument.
 
 The MVP takes an idea through five stages:
 
@@ -12,9 +12,9 @@ The MVP takes an idea through five stages:
 
 ## Current MVP
 
-Pitch runs entirely in the browser. There is no account, backend, database, or remote AI call.
+Pitch Arena processes the idea in the browser and stores the current workspace locally so it can survive a refresh.
 
-The analysis engine is deliberately simple and local. It uses sentence and keyword patterns to demonstrate the product flow. A future model or API can replace the engine without changing the main workflow.
+The analysis is designed around the argument structure: audience, problem, promise, differentiation, proof, outcome, timing, and ask. The workflow is built so that missing support remains visible rather than being invented.
 
 The current idea is saved in `localStorage` so it survives a refresh. Use **New** in the app header to clear it.
 
