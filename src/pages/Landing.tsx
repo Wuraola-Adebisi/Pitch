@@ -18,9 +18,9 @@ const steps = [
 
 const faqs = [
   ['Is this a deck generator?', 'No. Pitch starts with the reasoning underneath the deck. It can produce a structured draft, but unsupported sections remain visible.'],
-  ['Does it use an AI model?', 'Not in this MVP. The analysis runs in your browser using a local rule-based engine.'],
+  ['How does the analysis work?', 'Pitch Arena analyses the text you provide in your browser and uses it to build the diagnosis, argument map, draft, and challenge questions.'],
   ['What can I put in?', 'A product idea, startup concept, service, project proposal, business case, or anything you need to make a clearer argument for.'],
-  ['Does Pitch save my idea?', 'The current idea is stored in your browser so the workflow survives a refresh. There is no account or remote database in this MVP.'],
+  ['Does Pitch Arena save my idea?', 'Your current idea is stored in your browser so the workflow survives a refresh. You can clear it from the workspace at any time.'],
 ]
 
 export default function Landing() {
@@ -54,7 +54,7 @@ export default function Landing() {
                 Turn the messy idea into a <span className="text-coral">case.</span>
               </h1>
               <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-ink/65 sm:text-xl">
-                Pitch helps you inspect an idea, trace its logic, build a grounded draft, and find the questions it still needs to answer.
+                Pitch Arena helps you test an idea before you present it. It breaks the argument into its essential parts, shows what is supported, and surfaces the questions you still need to answer.
               </p>
             </div>
 
@@ -87,7 +87,7 @@ export default function Landing() {
                   <div className="mt-4 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
                     <div className="flex items-center gap-2 text-xs text-muted">
                       <span className="h-1.5 w-1.5 rounded-full bg-muted" />
-                      Nothing leaves this browser in the MVP
+                      Your idea stays in your browser
                     </div>
                     <div className="flex items-center gap-4">
                       <button type="button" onClick={() => setText(EXAMPLE)} className="text-xs font-medium text-muted underline decoration-line underline-offset-4 hover:text-ink">Use an example</button>
@@ -131,9 +131,9 @@ export default function Landing() {
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[.16em] text-muted">Inside Pitch</p>
+                <p className="text-xs font-semibold uppercase tracking-[.16em] text-muted">Inside Pitch Arena</p>
                 <h2 className="mt-4 max-w-xl font-display text-4xl font-bold leading-[.94] tracking-[-.05em] sm:text-6xl">Your argument, made inspectable.</h2>
-                <p className="mt-6 max-w-lg leading-7 text-muted">Pitch is deliberately not a button that turns a sentence into a polished-looking presentation. It exposes the reasoning underneath.</p>
+                <p className="mt-6 max-w-lg leading-7 text-muted">Pitch Arena is built to examine the thinking underneath an idea, not simply make the wording sound better.</p>
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2">
@@ -164,7 +164,7 @@ export default function Landing() {
                 <p className="text-xs font-semibold uppercase tracking-[.16em] text-muted">Argument map</p>
                 <h2 className="mt-4 max-w-2xl font-display text-4xl font-bold leading-[.94] tracking-[-.05em] sm:text-6xl">See the chain, not a pile of cards.</h2>
               </div>
-              <p className="max-w-sm text-sm leading-6 text-muted">A missing link should be obvious. Pitch does not quietly fill the hole for you.</p>
+              <p className="max-w-sm text-sm leading-6 text-muted">A missing link should be obvious. Pitch Arena does not quietly fill the hole for you.</p>
             </div>
             <div className="overflow-hidden rounded-[2rem] border border-line bg-card p-2 shadow-2xl shadow-black/20">
               <MapPreview />
@@ -176,8 +176,8 @@ export default function Landing() {
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[.16em] text-muted">A real workflow</p>
-              <h2 className="mt-4 max-w-xl font-display text-4xl font-bold leading-[.94] tracking-[-.05em] sm:text-6xl">Five screens. One argument.</h2>
-              <p className="mt-6 max-w-lg leading-7 text-muted">You can move through the whole thing without creating an account, connecting a model, or pretending the rough idea was finished.</p>
+              <h2 className="mt-4 max-w-xl font-display text-4xl font-bold leading-[.94] tracking-[-.05em] sm:text-6xl">Five steps. One argument.</h2>
+              <p className="mt-6 max-w-lg leading-7 text-muted">Move from rough idea to tested argument in five steps, with every gap kept visible.</p>
               <button type="button" onClick={() => navigate('/app')} className="mt-8 inline-flex items-center gap-2 rounded-full bg-coral px-6 py-3.5 text-sm font-semibold text-ink hover:bg-coral-dark">
                 Enter the workspace <ArrowRight size={16} />
               </button>
@@ -206,7 +206,7 @@ export default function Landing() {
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[.16em] text-muted">Built for unfinished thinking</p>
                 <h2 className="mt-4 max-w-xl font-display text-4xl font-bold leading-[.94] tracking-[-.05em] sm:text-6xl">Bring the messy version.</h2>
-                <p className="mt-5 max-w-lg leading-7 text-ink/60">The useful output is not a prettier sentence. It is knowing which sentence needs evidence, which claim is carrying the case, and what someone is likely to question.</p>
+                <p className="mt-5 max-w-lg leading-7 text-ink/60">The useful output is knowing what your argument is actually claiming, what supports it, and what someone is likely to question.</p>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 {['Claim', 'Assumption', 'Evidence', 'Question'].map((label, i) => (
