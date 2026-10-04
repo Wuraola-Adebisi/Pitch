@@ -35,7 +35,7 @@ export default function PitchView() {
           <div className="rounded-[1.5rem] border border-line bg-card p-6 sm:p-9">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[.15em] text-muted">Working draft</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[.15em] text-muted">Working argument</p>
                 <p className="mt-2 text-xs text-muted/70">{grounded} grounded · {open} still open</p>
               </div>
               <button type="button" onClick={() => navigate('/app')} className="inline-flex items-center gap-2 text-xs font-medium text-muted hover:text-ink"><Pencil size={13} />Edit source</button>
@@ -56,7 +56,7 @@ export default function PitchView() {
                   </span>
                 </div>
                 <p className="mt-5 max-w-3xl text-base leading-8 text-ink/78">{s.body}</p>
-                {s.status !== 'grounded' && <div className="mt-5 flex items-start gap-3 rounded-xl bg-smoky p-4 text-xs leading-5 text-muted"><span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-coral" />This section is a prompt, not a fabricated claim.</div>}
+                {s.status !== 'grounded' && <div className="mt-5 flex items-start gap-3 rounded-xl bg-smoky p-4 text-xs leading-5 text-muted"><span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-coral" />This section is open because the source did not establish it.</div>}
               </section>
             ))}
           </div>
@@ -73,7 +73,7 @@ export default function PitchView() {
             <button type="button" onClick={() => navigate('/app/challenge')} className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-line px-4 py-3 text-sm font-medium hover:border-coral"><Swords size={15} />Pressure-test it <ArrowRight size={14} /></button>
           </div>
           <div className="border-t border-line p-5">
-            <p className="text-xs leading-5 text-muted">The draft preserves what the source established. Open sections tell you what still needs your input.</p>
+            <p className="text-xs leading-5 text-muted">The draft preserves what your source established. Open sections show exactly where your argument still needs input.</p>
           </div>
         </aside>
       </div>
