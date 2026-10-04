@@ -31,8 +31,8 @@ export default function Footer() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#99a57d]">Explore</p>
             <ul className="mt-5 space-y-3 text-sm text-[#99a57d]">
-              <li><a href="/#method" className="hover:text-[#f5f3ee]">Inside Pitch Arena Arena</a></li>
-              <li><Link to="/about" className="hover:text-[#f5f3ee]">About Pitch Arena Arena</Link></li>
+              <li><a href="/#method" className="hover:text-[#f5f3ee]">Inside Pitch Arena</a></li>
+              <li><Link to="/about" className="hover:text-[#f5f3ee]">About Pitch Arena</Link></li>
               <li><Link to="/method" className="hover:text-[#f5f3ee]">The method</Link></li>
               <li><a href="/#argument-map" className="hover:text-[#f5f3ee]">See the map</a></li>
             </ul>
@@ -54,7 +54,7 @@ export default function Footer() {
             <p className="mt-1 text-xs leading-5 text-[#99a57d]">Start with the rough version. You can change it later.</p>
           </div>
           <Link to="/app" className="mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-[#eb4604] px-5 py-2.5 text-xs font-semibold text-[#f5f3ee] hover:bg-[#f77e0d] sm:mt-0">
-            Open Pitch Arena Arena <ArrowUpRight size={14} />
+            Open Pitch Arena <ArrowUpRight size={14} />
           </Link>
         </div>
       </div>
